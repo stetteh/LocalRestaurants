@@ -66,7 +66,7 @@ namespace LocalEats.Controllers
             {
                 db.Restaurants.Add(restaurant);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("CreateMenu", new {restaurantid = restaurant.Id});
             }
 
             return View(restaurant);
@@ -153,12 +153,16 @@ namespace LocalEats.Controllers
             {
                 var restaurant = db.Restaurants.Find(model.RestaurantId);
 
-                restaurant.Menus.Add(new Menu()
+                var newMenu = new Menu()
                 {
                     Restaurant = restaurant,
                     Name = model.Name,
                     Description = model.Description,
-                });
+                    Type = model.Type
+                };
+                restaurant.Menus.Add(newMenu);
+                db.SaveChanges();
+                return RedirectToAction("CreateFood", new { menuid = newMenu.Id});
             }
             return View(model);
         }
@@ -166,8 +170,8 @@ namespace LocalEats.Controllers
         [HttpGet]
         public ActionResult CreateFood(int menuid)
         {
-            var rest = db.Menus.Find(menuid);
-            var model = new CreateFoodVm() { MenuId = menuid};
+            var menu = db.Menus.Find(menuid);
+            var model = new CreateFoodVm() { MenuId = menu.Id};
             return View(model);
         }
 
@@ -178,17 +182,19 @@ namespace LocalEats.Controllers
             {
                 var menu = db.Menus.Find(model.MenuId);
 
-               menu.Foods.Add(new Food()
+                var newfood = (new Food()
                 {
                     ParentMenu = menu,
                     Name = model.FoodName,
                     Description = model.FoodDescription,
                     Price = model.FoodPrice,
                     FoodImage = model.FoodImage,
-                    Type = model.Type
+                    Type = model.TypeType
                 });
+                menu.Foods.Add(newfood);
+                db.SaveChanges();
             }
-            return View(model);
+            return RedirectToAction("Index");
         }
     }
 }

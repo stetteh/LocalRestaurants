@@ -24,6 +24,7 @@ namespace LocalEats.Models
         public int RestaurantId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public MenuType Type { get; set; }
     }
 
     public class CreateFoodVm
@@ -33,7 +34,7 @@ namespace LocalEats.Models
         public string FoodDescription { get; set; }
         public string FoodImage { get; set; }
         public double FoodPrice { get; set; }
-        public MenuType Type { get; set; }
+        public FoodType TypeType { get; set; }
 
     }
 

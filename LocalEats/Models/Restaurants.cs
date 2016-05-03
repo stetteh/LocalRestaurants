@@ -29,7 +29,7 @@ namespace LocalEats.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Restaurant Restaurant { get; set; }
+        public virtual Restaurant Restaurant { get; set; }
         public DrinkType Type { get; set; }
     }
 
@@ -37,6 +37,7 @@ namespace LocalEats.Models
     {
         public int Id { get; set; }
         public string Image { get; set; }
+        public virtual Restaurant Restaurant { get; set; }
     }
 
     public class Review
@@ -45,6 +46,7 @@ namespace LocalEats.Models
         public string Text { get; set; }
         public int Score { get; set; }
         public ApplicationUser User { get; set; }
+        public virtual Restaurant Restaurant { get; set; }
     }
 
     public enum Category
