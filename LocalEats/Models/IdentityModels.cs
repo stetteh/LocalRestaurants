@@ -29,5 +29,7 @@ namespace LocalEats.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<LocalEats.Models.Restaurant> Restaurants { get; set; }
     }
 }
