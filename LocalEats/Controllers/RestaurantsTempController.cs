@@ -17,7 +17,20 @@ namespace LocalEats.Controllers
         // GET: RestaurantsTemp
         public ActionResult Index()
         {
-            return View(db.Restaurants.ToList());
+            var model = db.Restaurants.Select(r => new RestaurantVm()
+            {
+                RestaurantName = r.Name,
+                RestaurantStreet =  r.StreetAddress,
+                RestaurantCity = r.City,
+                RestaurantState = r.State,
+                RestaurantZipcode = r.Zipcode,
+                RestaurantHours = r.Hours,
+                RestaurantPhoneNumber = r.Zipcode,
+                Category = r.Category,
+                PossibleMenus = r.Menus.Select(m=> new MenuVm() { Id = m.Id, Name = m.Name }),
+                PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name })
+            });
+            return View(model);
         }
 
         // GET: RestaurantsTemp/Details/5
@@ -122,6 +135,59 @@ namespace LocalEats.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        [HttpGet]
+        public ActionResult CreateMenu(int restaurantid)
+        {
+            var rest = db.Restaurants.Find(restaurantid);
+            var model = new CreateMenuVm() { RestaurantId = rest.Id};
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult CreateMenu(CreateMenuVm model)
+        {
+            if (ModelState.IsValid)
+            {
+                var restaurant = db.Restaurants.Find(model.RestaurantId);
+
+                restaurant.Menus.Add(new Menu()
+                {
+                    Restaurant = restaurant,
+                    Name = model.Name,
+                    Description = model.Description,
+                });
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult CreateFood(int menuid)
+        {
+            var rest = db.Menus.Find(menuid);
+            var model = new CreateFoodVm() { MenuId = menuid};
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult CreateFood(CreateFoodVm model)
+        {
+            if (ModelState.IsValid)
+            {
+                var menu = db.Menus.Find(model.MenuId);
+
+               menu.Foods.Add(new Food()
+                {
+                    ParentMenu = menu,
+                    Name = model.FoodName,
+                    Description = model.FoodDescription,
+                    Price = model.FoodPrice,
+                    FoodImage = model.FoodImage,
+                    Type = model.Type
+                });
+            }
+            return View(model);
         }
     }
 }

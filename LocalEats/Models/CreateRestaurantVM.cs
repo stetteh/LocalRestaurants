@@ -5,7 +5,7 @@ using System.Web;
 
 namespace LocalEats.Models
 {
-    public class CreateRestaurantVM
+    public class CreateRestaurantVm
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -16,25 +16,51 @@ namespace LocalEats.Models
         public DateTime Hours { get; set; }
         public int PhoneNumber { get; set; }
         public Category Category { get; set; }
-        public Menu Menu { get; set; }
-        public  Drink Drink { get; set; }
-        public Photo Photo { get; set; }
     }
 
-    public class CreateMenuVM
+    public class CreateMenuVm
     {
         public int RestaurantId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     }
 
-    public class CreateFoodVM
+    public class CreateFoodVm
     {
         public int MenuId { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string FoodName { get; set; }
+        public string FoodDescription { get; set; }
         public string FoodImage { get; set; }
-        public double Price { get; set; }
+        public double FoodPrice { get; set; }
         public MenuType Type { get; set; }
+
+    }
+
+    public class RestaurantVm
+    {
+        public string RestaurantName { get; set; }
+        public string RestaurantStreet { get; set; }
+        public string RestaurantCity { get; set; }
+        public string RestaurantState { get; set; }
+        public int RestaurantZipcode { get; set; }
+        public DateTime RestaurantHours { get; set; }
+        public int RestaurantPhoneNumber { get; set; }
+        public string RestaurantPhoto { get; set; }
+        public Category Category { get; set; }
+        public IEnumerable<MenuVm> PossibleMenus { get; set; } =  new List<MenuVm>();
+        public IEnumerable<DrinkVm> PossibleDrinks { get; set; } = new List<DrinkVm>();
+        
+    }
+
+    public class MenuVm
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class DrinkVm
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
