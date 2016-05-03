@@ -24,8 +24,9 @@ namespace LocalEats.Controllers
                 RestaurantCity = r.City,
                 RestaurantState = r.State,
                 RestaurantZipcode = r.Zipcode,
-                RestaurantHours = r.Hours,
                 RestaurantPhoneNumber = r.Zipcode,
+                Description = r.Description,
+                Features = r.Features,
                 Category = r.Category,
                 PossibleMenus = r.Menus.Select(m=> new MenuVm() { Id = m.Id, Name = m.Name }),
                 PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name })

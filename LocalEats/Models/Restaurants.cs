@@ -14,8 +14,9 @@ namespace LocalEats.Models
         public string City { get; set; }
         public string State { get; set; }
         public int Zipcode { get; set; }
-        public DateTime Hours { get; set; }
         public int PhoneNumber { get; set; }
+        public string Description { get; set; }
+        public string Features { get; set; }
         public Category Category { get; set; }
         
         public virtual ICollection<Menu> Menus { get; set; } = new List<Menu>();

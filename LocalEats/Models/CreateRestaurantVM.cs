@@ -13,7 +13,8 @@ namespace LocalEats.Models
         public string City { get; set; }
         public string State { get; set; }
         public int Zipcode { get; set; }
-        public DateTime Hours { get; set; }
+        public string Description { get; set; }
+        public string Features { get; set; }
         public int PhoneNumber { get; set; }
         public Category Category { get; set; }
     }
@@ -43,7 +44,8 @@ namespace LocalEats.Models
         public string RestaurantCity { get; set; }
         public string RestaurantState { get; set; }
         public int RestaurantZipcode { get; set; }
-        public DateTime RestaurantHours { get; set; }
+        public string Description { get; set; }
+        public string Features { get; set; }
         public int RestaurantPhoneNumber { get; set; }
         public string RestaurantPhoto { get; set; }
         public Category Category { get; set; }
