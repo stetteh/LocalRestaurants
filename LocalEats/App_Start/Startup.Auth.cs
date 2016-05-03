@@ -54,9 +54,9 @@ namespace LocalEats
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "153857091682999",
+               appSecret: "cabd04d8cde8e909fbb45d0727e9df44");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
