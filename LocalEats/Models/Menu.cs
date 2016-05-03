@@ -18,7 +18,8 @@ namespace LocalEats.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public Double  Price { get; set; }
+        public string FoodImage { get; set; }
+        public double  Price { get; set; }
         public MenuType Type { get; set; }
         public Menu ParentMenu { get; set; }
     }

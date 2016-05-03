@@ -16,11 +16,11 @@ namespace LocalEats.Models
         public int Zipcode { get; set; }
         public DateTime Hours { get; set; }
         public int PhoneNumber { get; set; }
-        public string Photos { get; set; }
         public Category Category { get; set; }
         
         public virtual ICollection<Menu> Menus { get; set; } = new List<Menu>();
         public virtual ICollection<Drink> Drinks { get; set; } = new List<Drink>();
+        public virtual ICollection<Photo> Photos { get; set; } = new List<Photo>();
         public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
     }
 
@@ -30,6 +30,12 @@ namespace LocalEats.Models
         public string Name { get; set; }
         public Restaurant Restaurant { get; set; }
         public DrinkType Type { get; set; }
+    }
+
+    public class Photo
+    {
+        public int Id { get; set; }
+        public string Image { get; set; }
     }
 
     public class Review
