@@ -40,6 +40,7 @@ namespace LocalEats.Models
 
     public class RestaurantVm
     {
+        public int RestautantId { get; set; }
         public string RestaurantName { get; set; }
         public string RestaurantStreet { get; set; }
         public string RestaurantCity { get; set; }

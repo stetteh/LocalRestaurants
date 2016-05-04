@@ -19,6 +19,7 @@ namespace LocalEats.Controllers
         {
             var model = db.Restaurants.Select(r => new RestaurantVm()
             {
+                RestautantId = r.Id,
                 RestaurantName = r.Name,
                 RestaurantStreet =  r.StreetAddress,
                 RestaurantCity = r.City,
@@ -31,7 +32,22 @@ namespace LocalEats.Controllers
                 PossibleMenus = r.Menus.Select(m=> new MenuVm() { Id = m.Id, Name = m.Name }),
                 PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name })
             });
-            return View(model);
+
+            var newres = db.Restaurants.Select(res => new
+            {
+                 Name = res.Name,
+                 Street = res.StreetAddress,
+                 City = res.City,
+                 State = res.State,
+                 Zip = res.Zipcode,
+                 Phone = res.PhoneNumber,
+                 Description = res.Description,
+                 Feature = res.Features,
+                 Category = res.Category,
+                 menu = res.Menus.Count,
+                 drinks = res.Drinks
+            });
+            return Json(newres, JsonRequestBehavior.AllowGet);
         }
 
         // GET: RestaurantsTemp/Details/5
@@ -194,7 +210,7 @@ namespace LocalEats.Controllers
                 menu.Foods.Add(newfood);
                 db.SaveChanges();
             }
-            return RedirectToAction("Index");
+            return Content("done");
         }
     }
 }
