@@ -268,6 +268,8 @@
     <Content Include="Views\RestaurantsTemp\Details.cshtml" />
     <Content Include="Views\RestaurantsTemp\Edit.cshtml" />
     <Content Include="Views\RestaurantsTemp\Index.cshtml" />
+    <Content Include="Views\RestaurantsTemp\CreateMenu.cshtml" />
+    <Content Include="Views\RestaurantsTemp\CreateFood.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
