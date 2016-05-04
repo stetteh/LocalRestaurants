@@ -17,7 +17,7 @@ namespace LocalEats.Controllers
         // GET: RestaurantsTemp
         public ActionResult Index()
         {
-            var model = db.Restaurants.Select(r => new RestaurantVm()
+            var model = db.Restaurants.ToList().Select(r => new RestaurantVm()
             {
                 RestautantId = r.Id,
                 RestaurantName = r.Name,
@@ -33,21 +33,8 @@ namespace LocalEats.Controllers
                 PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name })
             });
 
-            var newres = db.Restaurants.Select(res => new
-            {
-                 Name = res.Name,
-                 Street = res.StreetAddress,
-                 City = res.City,
-                 State = res.State,
-                 Zip = res.Zipcode,
-                 Phone = res.PhoneNumber,
-                 Description = res.Description,
-                 Feature = res.Features,
-                 Category = res.Category,
-                 menu = res.Menus.Count,
-                 drinks = res.Drinks
-            });
-            return Json(newres, JsonRequestBehavior.AllowGet);
+            
+            return View(model);
         }
 
         // GET: RestaurantsTemp/Details/5
