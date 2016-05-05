@@ -22,3 +22,18 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#map_canvas {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+}
+
+#map_spacer {
+    height: 400px;
+    width: 100%:
+}
