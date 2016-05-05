@@ -15,7 +15,7 @@ namespace LocalEats.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: RestaurantsTemp
-        public ActionResult Index(string searchCity, string city)
+        public ActionResult Index()
         {
             var model = db.Restaurants.ToList().Select(r => new RestaurantVm()
             {
@@ -32,10 +32,8 @@ namespace LocalEats.Controllers
                 PossibleMenus = r.Menus.Select(m=> new MenuVm() { Id = m.Id, Name = m.Name, Type = m.Type}),
                 PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name })
             });
-           
 
-
-            return View(model);
+           return View(model);
         }
 
         // GET: RestaurantsTemp/Details/5
