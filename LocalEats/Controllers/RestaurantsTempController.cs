@@ -20,12 +20,12 @@ namespace LocalEats.Controllers
             var model = db.Restaurants.ToList().Select(r => new RestaurantVm()
             {
                 RestautantId = r.Id,
-                RestaurantName = r.Name,
-                RestaurantStreet =  r.StreetAddress,
-                RestaurantCity = r.City,
-                RestaurantState = r.State,
-                RestaurantZipcode = r.Zipcode,
-                RestaurantPhoneNumber = r.Zipcode,
+                Name = r.Name,
+                Street =  r.StreetAddress,
+                City = r.City,
+                State = r.State,
+                Zipcode = r.Zipcode,
+                PhoneNumber = r.Zipcode,
                 Description = r.Description,
                 Features = r.Features,
                 Category = r.Category,
@@ -187,10 +187,10 @@ namespace LocalEats.Controllers
                 var newfood = (new Food()
                 {
                     ParentMenu = menu,
-                    Name = model.FoodName,
-                    Description = model.FoodDescription,
-                    Price = model.FoodPrice,
-                    FoodImage = model.FoodImage,
+                    Name = model.Name,
+                    Description = model.Description,
+                    Price = model.Price,
+                    FoodImage = model.Image,
                     Type = model.TypeType
                 });
                 menu.Foods.Add(newfood);
@@ -217,14 +217,35 @@ namespace LocalEats.Controllers
                 var newDrink = new Drink()
                 {
                     Restaurant = restaurant,
-                    Name = model.DrinkName,
-                    Description = model.DrinkDescription,
+                    Name = model.Name,
+                    Description = model.Description,
                     Type = model.Type
                 };
                 restaurant.Drinks.Add(newDrink);
                 db.SaveChanges();
                 return RedirectToAction("CreateDrink");
             }
+            return View(model);
+        }
+
+        public ActionResult RestaurantList()
+        {
+            var model = db.Restaurants.ToList().Select(r => new RestaurantVm()
+            {
+                RestautantId = r.Id,
+                Name = r.Name,
+                Street = r.StreetAddress,
+                City = r.City,
+                State = r.State,
+                Zipcode = r.Zipcode,
+                PhoneNumber = r.Zipcode,
+                Description = r.Description,
+                Features = r.Features,
+                Category = r.Category,
+                PossibleMenus = r.Menus.Select(m => new MenuVm() { Id = m.Id, Name = m.Name, Type = m.Type }),
+                PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name })
+            });
+
             return View(model);
         }
     }
