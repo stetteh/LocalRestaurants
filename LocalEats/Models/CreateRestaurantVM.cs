@@ -38,6 +38,14 @@ namespace LocalEats.Models
 
     }
 
+    public class CreateDrinkVm
+    {
+        public int RestaurantId { get; set; }
+        public string DrinkName { get; set; }
+        public string DrinkDescription { get; set; }
+        public DrinkType Type { get; set; }
+    }
+
     public class RestaurantVm
     {
         public int RestautantId { get; set; }
@@ -60,11 +68,14 @@ namespace LocalEats.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public MenuType Type { get; set; }
+       
     }
 
     public class DrinkVm
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public DrinkType Type { get; set; }
     }
 }

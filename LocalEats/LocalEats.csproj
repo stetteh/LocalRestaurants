@@ -198,6 +198,10 @@
     <Compile Include="Migrations\201605032104012_types.Designer.cs">
       <DependentUpon>201605032104012_types.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605050103252_additionalchanges.cs" />
+    <Compile Include="Migrations\201605050103252_additionalchanges.Designer.cs">
+      <DependentUpon>201605050103252_additionalchanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateRestaurantVM.cs" />
@@ -300,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605032104012_types.resx">
       <DependentUpon>201605032104012_types.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605050103252_additionalchanges.resx">
+      <DependentUpon>201605050103252_additionalchanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

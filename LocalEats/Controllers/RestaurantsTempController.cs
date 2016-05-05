@@ -29,7 +29,7 @@ namespace LocalEats.Controllers
                 Description = r.Description,
                 Features = r.Features,
                 Category = r.Category,
-                PossibleMenus = r.Menus.Select(m=> new MenuVm() { Id = m.Id, Name = m.Name }),
+                PossibleMenus = r.Menus.Select(m=> new MenuVm() { Id = m.Id, Name = m.Name, Type = m.Type}),
                 PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name })
             });
 
@@ -198,6 +198,35 @@ namespace LocalEats.Controllers
                 db.SaveChanges();
             }
             return Content("done");
+        }
+
+        [HttpGet]
+        public ActionResult CreateDrink(int restaurantid)
+        {
+            var rest = db.Restaurants.Find(restaurantid);
+            var model = new CreateDrinkVm() { RestaurantId = rest.Id };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult CreateDrink(CreateDrinkVm model)
+        {
+            if (ModelState.IsValid)
+            {
+                var restaurant = db.Restaurants.Find(model.RestaurantId);
+
+                var newDrink = new Drink()
+                {
+                    Restaurant = restaurant,
+                    Name = model.DrinkName,
+                    Description = model.DrinkDescription,
+                    Type = model.Type
+                };
+                restaurant.Drinks.Add(newDrink);
+                db.SaveChanges();
+                return RedirectToAction("CreateDrink");
+            }
+            return View(model);
         }
     }
 }
