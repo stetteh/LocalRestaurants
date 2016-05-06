@@ -274,6 +274,7 @@
     <Content Include="Views\RestaurantsTemp\Index.cshtml" />
     <Content Include="Views\RestaurantsTemp\CreateMenu.cshtml" />
     <Content Include="Views\RestaurantsTemp\CreateFood.cshtml" />
+    <Content Include="Views\RestaurantsTemp\RestaurantList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

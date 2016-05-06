@@ -228,25 +228,18 @@ namespace LocalEats.Controllers
             return View(model);
         }
 
-        public ActionResult RestaurantList()
+        public ActionResult RestaurantList(string searchCity)
         {
-            var model = db.Restaurants.ToList().Select(r => new RestaurantVm()
-            {
-                RestautantId = r.Id,
-                Name = r.Name,
-                Street = r.StreetAddress,
-                City = r.City,
-                State = r.State,
-                Zipcode = r.Zipcode,
-                PhoneNumber = r.Zipcode,
-                Description = r.Description,
-                Features = r.Features,
-                Category = r.Category,
-                PossibleMenus = r.Menus.Select(m => new MenuVm() { Id = m.Id, Name = m.Name, Type = m.Type }),
-                PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name })
-            });
+      
+            var result = from e in db.Restaurants
+                select e;
 
-            return View(model);
+            if (!String.IsNullOrEmpty(searchCity))
+            {
+                result = result.Where(s => s.City.StartsWith(searchCity));
+            }
+
+            return View(result);
         }
     }
 }

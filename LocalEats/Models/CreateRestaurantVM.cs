@@ -64,6 +64,7 @@ namespace LocalEats.Models
         
     }
 
+
     public class MenuVm
     {
         public int Id { get; set; }
