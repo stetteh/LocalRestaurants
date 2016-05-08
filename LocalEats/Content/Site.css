@@ -1,9 +1,15 @@
-﻿body {
+﻿@import url(https://fonts.googleapis.com/css?family=Lato);
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    letter-spacing: 3px;
+    font-size: 15px;
 }
 
-/* Set padding to keep content from hitting the edges */
+/* Set padding to keep content from hitting the edges 
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
@@ -35,5 +41,53 @@ textarea {
 
 #map_spacer {
     height: 400px;
-    width: 100%:
+    width: 100%;
 }
+
+.wrapper {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    background-color: #EEEEEE;
+    width: 100%;
+}
+.first {
+    padding-bottom: 20px;
+    padding-top: 30px;
+}
+
+.second {
+    padding-bottom: 20px;
+}
+
+.third {
+    padding-bottom: 30px;
+}
+
+.featured {
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.fres {
+    margin-top: 20px;
+    text-align: left;
+}
+.fres1 {
+     background-color: #131351;
+}
+.gap-right {
+    margin-right: 10px;
+}
+.city {
+     background-image: url("../images/Layer_4.jpg");
+     height: 400px;
+     background-size: cover;
+     background-position: center center;
+     background-repeat: no-repeat;
+}
+h2 {
+    text-align: center;
+    font-weight: bold;
+}
+
+
