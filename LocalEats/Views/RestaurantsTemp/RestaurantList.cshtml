@@ -1,5 +1,5 @@
 ﻿@using LocalEats.Models
-@model IEnumerable<LocalEats.Models.Restaurant>
+@model IEnumerable<LocalEats.Models.RestaurantVm>
 
 @{
     ViewBag.Title = "RestaurantList";
@@ -9,7 +9,7 @@
 {
     <p>
         City: @Html.TextBox("searchCity")
-        <input type ="submit" value="Search"/>
+        <input type="submit" value="Search" />
     </p>
 }
 <h2>RestaurantList</h2>
@@ -18,14 +18,22 @@
     @foreach (var b in Model)
     {
         <div class="col-sm-3">
-            <p>@b.Photos.First()</p>
-            <p style="color: blue"><b>@b.Name</b>
+            @if (b.PossiblePhotos.Any())
+            {
+                foreach (var p in b.PossiblePhotos)
+                {
+                    <img src="@p.ImageUrl" alt="" />
+                }
+            }
+            <p style="color: blue">
+                <b>@b.Name</b>
             </p>
-            <p>@b.StreetAddress</p>
+            <p>@b.Street</p>
             <p>@b.City, @b.State, @b.Zipcode</p>
-            
+            @Html.ActionLink("Add Photo", "AddPhoto", "RestaurantsTemp", new { id = b.RestautantId }, null)
+
+
         </div>
     }
 </div>
-
 

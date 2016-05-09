@@ -24,7 +24,7 @@ namespace LocalEats.Controllers
             {
                 RestautantId = r.Id,
                 Name = r.Name,
-                Street =  r.StreetAddress,
+                Street = r.StreetAddress,
                 City = r.City,
                 State = r.State,
                 Zipcode = r.Zipcode,
@@ -32,11 +32,11 @@ namespace LocalEats.Controllers
                 Description = r.Description,
                 Features = r.Features,
                 Category = r.Category,
-                PossibleMenus = r.Menus.Select(m=> new MenuVm() { Id = m.Id, Name = m.Name, Type = m.Type}),
+                PossibleMenus = r.Menus.Select(m => new MenuVm() { Id = m.Id, Name = m.Name, Type = m.Type }),
                 PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name })
             });
 
-           return View(model);
+            return View(model);
         }
 
         // GET: RestaurantsTemp/Details/5
@@ -71,7 +71,7 @@ namespace LocalEats.Controllers
             {
                 db.Restaurants.Add(restaurant);
                 db.SaveChanges();
-                return RedirectToAction("CreateMenu", new {restaurantid = restaurant.Id});
+                return RedirectToAction("CreateMenu", new { restaurantid = restaurant.Id });
             }
 
             return View(restaurant);
@@ -147,7 +147,7 @@ namespace LocalEats.Controllers
         public ActionResult CreateMenu(int restaurantid)
         {
             var rest = db.Restaurants.Find(restaurantid);
-            var model = new CreateMenuVm() { RestaurantId = rest.Id};
+            var model = new CreateMenuVm() { RestaurantId = rest.Id };
             return View(model);
         }
 
@@ -167,7 +167,7 @@ namespace LocalEats.Controllers
                 };
                 restaurant.Menus.Add(newMenu);
                 db.SaveChanges();
-                return RedirectToAction("CreateFood", new { menuid = newMenu.Id});
+                return RedirectToAction("CreateFood", new { menuid = newMenu.Id });
             }
             return View(model);
         }
@@ -176,7 +176,7 @@ namespace LocalEats.Controllers
         public ActionResult CreateFood(int menuid)
         {
             var menu = db.Menus.Find(menuid);
-            var model = new CreateFoodVm() { MenuId = menu.Id};
+            var model = new CreateFoodVm() { MenuId = menu.Id };
             return View(model);
         }
 
@@ -231,18 +231,37 @@ namespace LocalEats.Controllers
             return View(model);
         }
 
-        public ActionResult RestaurantList(string searchCity)
+        public ActionResult RestaurantList()
         {
-      
-            var result = from e in db.Restaurants
-                select e;
 
-            if (!String.IsNullOrEmpty(searchCity))
+            //var result = from e in db.Restaurants
+            //    select e;
+
+            //if (!String.IsNullOrEmpty(searchCity))
+            //{
+            //    result = result.Where(s => s.City.StartsWith(searchCity));
+            //}
+
+            //return View(result);
+
+            var model = db.Restaurants.ToList().Select(r => new RestaurantVm()
             {
-                result = result.Where(s => s.City.StartsWith(searchCity));
-            }
+                RestautantId = r.Id,
+                Name = r.Name,
+                Street = r.StreetAddress,
+                City = r.City,
+                State = r.State,
+                Zipcode = r.Zipcode,
+                PhoneNumber = r.Zipcode,
+                Description = r.Description,
+                Features = r.Features,
+                Category = r.Category,
+                PossibleMenus = r.Menus.Select(m => new MenuVm() { Id = m.Id, Name = m.Name, Type = m.Type }),
+                PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name }),
+                PossiblePhotos = r.Photos.Select(p => new PhotoVm() { Id = p.Id, ImageUrl = "https://localdinning.blob.core.windows.net/" + p.Image })
+                });
 
-            return View(result);
+            return View(model);
         }
 
         [HttpGet]
@@ -255,7 +274,7 @@ namespace LocalEats.Controllers
         public ActionResult UploadImages(HttpPostedFileBase image)
         {
             var newFileName = $"{Guid.NewGuid()}.jpg";
-            var location = SaveImage(image.InputStream, "Dining", newFileName);
+            var location = SaveImage(image.InputStream, "dining", newFileName);
 
 
             return RedirectToAction("Index");
@@ -268,16 +287,40 @@ namespace LocalEats.Controllers
                     "DefaultEndpointsProtocol=https;AccountName=localdinning;AccountKey=1Fy6RiGAvfp318mV7PDGlyPeRZpWEIoBAzbbZOHJYS0h01cWaem7Z87PuEo++3sDK43KQbLzguin+FTdIQViQg==");
 
             CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-            CloudBlobContainer container = blobClient.GetContainerReference(folder);
+            CloudBlobContainer container = blobClient.GetContainerReference(folder.ToLower());
 
             container.CreateIfNotExists();
-            container.SetPermissions(new BlobContainerPermissions {PublicAccess = BlobContainerPublicAccessType.Blob});
+            container.SetPermissions(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 
 
             CloudBlockBlob blockBlob = container.GetBlockBlobReference(newFileName);
             blockBlob.UploadFromStream(imageStream);
 
             return $"{folder}/{newFileName}";
+        }
+
+        [HttpGet]
+        public ActionResult AddPhoto(int id)
+        {
+            var model = new AddPhotoVM();
+            var restaurant = db.Restaurants.Find(id);
+            model.RestaurantName = restaurant.Name;
+            model.RestaurantId = restaurant.Id;
+
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult AddPhoto(AddPhotoVM newPhoto)
+        {
+            var restaurant = db.Restaurants.Find(newPhoto.RestaurantId);
+
+            var newFileName = $"{Guid.NewGuid()}.jpg";
+            var location = SaveImage(newPhoto.ImageUrl.InputStream, "Dining", newFileName);
+
+            var p = new Photo() { Restaurant = restaurant, Image = location };
+            restaurant.Photos.Add(p);
+            db.SaveChanges();
+            return RedirectToAction("RestaurantList");
         }
     }
 }

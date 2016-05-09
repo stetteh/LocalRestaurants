@@ -46,6 +46,13 @@ namespace LocalEats.Models
         public DrinkType Type { get; set; }
     }
 
+    public class AddPhotoVM
+    {
+        public int RestaurantId { get; set; }
+        public string RestaurantName { get; set; }
+        public HttpPostedFileBase ImageUrl { get; set; }
+    }
+
     public class RestaurantVm
     {
         public int RestautantId { get; set; }
@@ -61,10 +68,9 @@ namespace LocalEats.Models
         public Category Category { get; set; }
         public IEnumerable<MenuVm> PossibleMenus { get; set; } =  new List<MenuVm>();
         public IEnumerable<DrinkVm> PossibleDrinks { get; set; } = new List<DrinkVm>();
-        
+        public IEnumerable<PhotoVm> PossiblePhotos { get; set; } = new List<PhotoVm>();
+
     }
-
-
     public class MenuVm
     {
         public int Id { get; set; }
@@ -72,11 +78,16 @@ namespace LocalEats.Models
         public MenuType Type { get; set; }
        
     }
-
     public class DrinkVm
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public DrinkType Type { get; set; }
+    }
+
+    public class PhotoVm
+    {
+        public int Id { get; set; }
+        public string ImageUrl { get; set; }
     }
 }
