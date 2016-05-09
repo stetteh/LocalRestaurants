@@ -38,6 +38,7 @@ namespace LocalEats.Models
     {
         public int Id { get; set; }
         public string Image { get; set; }
+        public virtual Restaurant Restaurant { get; set; }
     }
 
     public class Review
