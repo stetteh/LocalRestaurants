@@ -71,9 +71,14 @@ textarea {
 .fres {
     margin-top: 20px;
     text-align: left;
+    color: white;
+    
 }
 .fres1 {
      background-color: #131351;
+     border-radius: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .gap-right {
     margin-right: 10px;

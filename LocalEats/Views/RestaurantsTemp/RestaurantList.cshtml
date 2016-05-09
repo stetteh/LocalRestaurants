@@ -1,4 +1,5 @@
-﻿@model IEnumerable<LocalEats.Models.Restaurant>
+﻿@using LocalEats.Models
+@model IEnumerable<LocalEats.Models.Restaurant>
 
 @{
     ViewBag.Title = "RestaurantList";
@@ -17,11 +18,12 @@
     @foreach (var b in Model)
     {
         <div class="col-sm-3">
+            <p>@b.Photos.First()</p>
             <p style="color: blue"><b>@b.Name</b>
             </p>
             <p>@b.StreetAddress</p>
             <p>@b.City, @b.State, @b.Zipcode</p>
-            <p>@b.Photos</p>
+            
         </div>
     }
 </div>
