@@ -300,6 +300,7 @@
     <Content Include="Views\RestaurantsTemp\CreateMenu.cshtml" />
     <Content Include="Views\RestaurantsTemp\CreateFood.cshtml" />
     <Content Include="Views\RestaurantsTemp\RestaurantList.cshtml" />
+    <Content Include="Views\RestaurantsTemp\UploadImages.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

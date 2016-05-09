@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using LocalEats.Models;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace LocalEats.Controllers
 {
@@ -242,6 +245,39 @@ namespace LocalEats.Controllers
             return View(result);
         }
 
+        [HttpGet]
+        public ActionResult UploadImages()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult UploadImages(HttpPostedFileBase image)
+        {
+            var newFileName = $"{Guid.NewGuid()}.jpg";
+            var location = SaveImage(image.InputStream, "Dining", newFileName);
+
+
+            return RedirectToAction("Index");
+        }
+
+        private static string SaveImage(Stream imageStream, string folder, string newFileName)
+        {
+            CloudStorageAccount storageAccount = CloudStorageAccount
+                .Parse(
+                    "DefaultEndpointsProtocol=https;AccountName=localdinning;AccountKey=1Fy6RiGAvfp318mV7PDGlyPeRZpWEIoBAzbbZOHJYS0h01cWaem7Z87PuEo++3sDK43KQbLzguin+FTdIQViQg==");
+
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+            CloudBlobContainer container = blobClient.GetContainerReference(folder);
+
+            container.CreateIfNotExists();
+            container.SetPermissions(new BlobContainerPermissions {PublicAccess = BlobContainerPublicAccessType.Blob});
+
+
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference(newFileName);
+            blockBlob.UploadFromStream(imageStream);
+
+            return $"{folder}/{newFileName}";
+        }
     }
 }
