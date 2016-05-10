@@ -74,7 +74,7 @@ namespace LocalEats.Controllers
         public ActionResult CreateDrink(int restaurantid)
         {
             var rest = db.Restaurants.Find(restaurantid);
-            var model = new CreateDrinkVm() {RestaurantId = rest.Id};
+            var model = new CreateDrinkVm() {RestaurantId = rest.Id, Name = rest.Name};
             return View(model);
         }
 
