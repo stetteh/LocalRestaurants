@@ -1,5 +1,8 @@
 ﻿@import url(https://fonts.googleapis.com/css?family=Lato);
 
+*{
+	margin: 0;
+}
 body {
     padding-top: 50px;
     padding-bottom: 20px;
@@ -7,12 +10,14 @@ body {
     font-weight: 400;
     letter-spacing: 3px;
     font-size: 15px;
+    height:100%;
 }
 
-/* Set padding to keep content from hitting the edges 
+/*Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    padding-top:45px; 
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -94,16 +99,22 @@ h2 {
     text-align: center;
     font-weight: bold;
 }
+
+navbar{
+    background-color: #333333;
+     text-align: center;
+}
+.list {
+    background-color: white;
+    padding-bottom: 50px;
+}
+
 footer {
     text-align: center;
     color: white;
     background-color: #333333;
-    margin: 0;
-    padding-top: 25px;
-    padding-bottom: 10px;
+    padding-top: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
-navbar {
-    background-color: #333333;
-     text-align: center;
-}
-

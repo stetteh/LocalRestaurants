@@ -141,7 +141,7 @@ namespace LocalEats.Controllers
                 City = r.City,
                 State = r.State,
                 Zipcode = r.Zipcode,
-                PhoneNumber = r.Zipcode,
+                PhoneNumber = r.PhoneNumber,
                 Description = r.Description,
                 Features = r.Features,
                 Category = r.Category,
@@ -210,11 +210,6 @@ namespace LocalEats.Controllers
             restaurant.Photos.Add(p);
             db.SaveChanges();
             return RedirectToAction("RestaurantList");
-        }
-
-        public ActionResult RestaurantPage()
-        {
-            return View();
         }
     }
 }

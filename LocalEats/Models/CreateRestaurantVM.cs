@@ -12,10 +12,10 @@ namespace LocalEats.Models
         public string StreetAddress { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public int Zipcode { get; set; }
+        public string Zipcode { get; set; }
         public string Description { get; set; }
         public string Features { get; set; }
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
         public Category Category { get; set; }
     }
 
@@ -60,10 +60,10 @@ namespace LocalEats.Models
         public string Street { get; set; }
         public string City { get; set; }
         public string State { get; set; }
-        public int Zipcode { get; set; }
+        public string Zipcode { get; set; }
         public string Description { get; set; }
         public string Features { get; set; }
-        public int PhoneNumber { get; set; }
+        public string  PhoneNumber { get; set; }
         public string Photo { get; set; }
         public Category Category { get; set; }
         public IEnumerable<MenuVm> PossibleMenus { get; set; } =  new List<MenuVm>();

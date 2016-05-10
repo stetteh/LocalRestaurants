@@ -309,9 +309,9 @@
     <Content Include="Views\RestaurantsTemp\Index.cshtml" />
     <Content Include="Views\RestaurantsTemp\CreateMenu.cshtml" />
     <Content Include="Views\RestaurantsTemp\CreateFood.cshtml" />
-    <Content Include="Views\RestaurantsTemp\RestaurantList.cshtml" />
-    <Content Include="Views\RestaurantsTemp\UploadImages.cshtml" />
-    <Content Include="Views\RestaurantsTemp\AddPhoto.cshtml" />
+    <Content Include="Views\Restaurants\RestaurantList.cshtml" />
+    <Content Include="Views\Restaurants\UploadImages.cshtml" />
+    <Content Include="Views\Restaurants\AddPhoto.cshtml" />
     <Content Include="Views\Restaurants\Index.cshtml" />
     <Content Include="Views\Restaurants\Create.cshtml" />
     <Content Include="Views\Restaurants\Edit.cshtml" />

@@ -7,7 +7,7 @@
 <h2>Add Photo</h2>
 
 
-@using (Html.BeginForm("AddPhoto", "RestaurantsTemp", FormMethod.Post,
+@using (Html.BeginForm("AddPhoto", "Restaurants", FormMethod.Post,
                              new { enctype = "multipart/form-data" }))
 { 
     @Html.AntiForgeryToken()

@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "UploadImages";
+}
+
+<h2>UploadImages</h2>
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        @using (Html.BeginForm("UploadImages", "Restaurants", FormMethod.Post,
+                 new { enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">   
+                File: <input type="file" name="image" value="" class="form-control"/>
+                <br/>
+                <input type="submit" value="Please Upload" class="form-control"/>
+            </div>
+        }
+
+    </div>
+</div>

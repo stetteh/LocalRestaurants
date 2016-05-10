@@ -1,0 +1,36 @@
+﻿@model IEnumerable<LocalEats.Models.RestaurantVm>
+
+@{
+    ViewBag.Title = "RestaurantList";
+}
+
+@using (Html.BeginForm("RestaurantList", "Restaurants", FormMethod.Get))
+{
+    <p>
+        City: @Html.TextBox("searchCity")
+        <input type="submit" value="Search" />
+    </p>
+}
+<h2>RestaurantList</h2>
+<div class="container-fluid list">
+    <div class="row-fluid">
+        @foreach (var b in Model)
+        {
+            <div class="col-sm-2 col-sm-offset-2">
+                @if (b.PossiblePhotos.Any())
+                {
+                    foreach (var p in b.PossiblePhotos)
+                    {
+                        <img src="@p.ImageUrl" alt="" />
+                    }
+                }
+                <p style="color: blue">
+                    <b>@b.Name</b>
+                </p>
+                <p>@b.Street</p>
+                <p>@b.City, @b.State, @b.Zipcode</p>
+                @Html.ActionLink("Add Photo", "AddPhoto", "Restaurants", new { id = b.RestaurantId }, null)
+            </div>
+        }
+    </div>
+</div>
