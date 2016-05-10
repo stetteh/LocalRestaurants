@@ -315,11 +315,12 @@
     <Content Include="Views\Restaurants\Index.cshtml" />
     <Content Include="Views\Restaurants\Create.cshtml" />
     <Content Include="Views\Restaurants\Edit.cshtml" />
+    <Content Include="Views\Menus\CreateMenu.cshtml" />
+    <Content Include="Views\Menus\CreateFood.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\" />
-    <Folder Include="Views\Menus\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

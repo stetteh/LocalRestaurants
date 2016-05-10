@@ -15,7 +15,7 @@ namespace LocalEats.Controllers
         public ActionResult CreateMenu(int restaurantid)
         {
             var rest = db.Restaurants.Find(restaurantid);
-            var model = new CreateMenuVm() {RestaurantId = rest.Id};
+            var model = new CreateMenuVm() {RestaurantId = rest.Id, Name = rest.Name};
             return View(model);
         }
 
@@ -44,7 +44,7 @@ namespace LocalEats.Controllers
         public ActionResult CreateFood(int menuid)
         {
             var menu = db.Menus.Find(menuid);
-            var model = new CreateFoodVm() {MenuId = menu.Id};
+            var model = new CreateFoodVm() {MenuId = menu.Id, Name = menu.Name};
             return View(model);
         }
 
