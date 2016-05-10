@@ -302,12 +302,13 @@
     <Content Include="Views\RestaurantsTemp\Delete.cshtml" />
     <Content Include="Views\RestaurantsTemp\Details.cshtml" />
     <Content Include="Views\RestaurantsTemp\Edit.cshtml" />
-    <Content Include="Views\Restaurant\Index.cshtml" />
+    <Content Include="Views\RestaurantsTemp\Index.cshtml" />
     <Content Include="Views\RestaurantsTemp\CreateMenu.cshtml" />
     <Content Include="Views\RestaurantsTemp\CreateFood.cshtml" />
     <Content Include="Views\RestaurantsTemp\RestaurantList.cshtml" />
     <Content Include="Views\RestaurantsTemp\UploadImages.cshtml" />
     <Content Include="Views\RestaurantsTemp\AddPhoto.cshtml" />
+    <Content Include="Views\Restaurants\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -33,7 +33,7 @@ namespace LocalEats.Controllers
                 PossibleMenus = r.Menus.Select(m => new MenuVm() {Id = m.Id, Name = m.Name, Type = m.Type}),
                 PossibleDrinks = r.Drinks.Select(d => new DrinkVm() {Id = d.Id, Name = d.Name})
             });
-            return View();
+            return View(model);
         }
 
         // Create Restaurant

@@ -1,0 +1,173 @@
+﻿@model IEnumerable<LocalEats.Models.RestaurantVm>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div id="map_canvas"></div>
+<div id="map_spacer"></div>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="container-fluid wrapper">
+    <h2>CATEGORIES</h2>
+    <div class="row first">
+        <div class="col-sm-2 col-sm-offset-2">
+            <img src="../images/Layer_6.jpg" alt="American" class="img-responsive" />
+        </div>
+        <div class="col-sm-2">
+            <img src="../images/Layer_7.jpg" alt="Asian" class="img-responsive" />
+        </div>
+        <div class="col-sm-2">
+            <img src="../images/Layer_8.jpg" alt="BBQ" class="img-responsive" />
+        </div>
+        <div class="col-sm-2">
+            <img src="../images/Layer_13.jpg" alt="African" class="img-responsive" />
+        </div>
+    </div>
+    <div class="row second">
+        <div class="col-sm-2 col-sm-offset-2">
+            <img src="../images/Layer_9.jpg" alt="Vegeterian" class="img-responsive" />
+        </div>
+        <div class="col-sm-2">
+            <img src="../images/Layer_10.jpg" alt="Italian" class="img-responsive" />
+        </div>
+        <div class="col-sm-2">
+            <img src="../images/Layer_12.jpg" alt="Mediterranean" class="img-responsive" />
+        </div>
+        <div class="col-sm-2">
+            <img src="../images/Layer_14.jpg" alt="Mexican" class="img-responsive" />
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid featured">
+    <h2>FEATURED RESTAURANTS</h2>
+    <div class="row fres">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-4">
+                <img src="../images/Layer_2.jpg" alt="Featured" class="img-responsive img-rounded pull-left gap-right center-block" />
+            </div>
+            <div class="col-sm-8 fres1">
+                <p>Lorem ipsum dolor sit amet, an prima summo liberavisse ius, option similique ea pri.</p>
+                <p> Duo cu porro dolore accumsan, saperet inimicus oportere ad nec. Sit ad errem accusam,</p>
+                <p>ei mea possim pericula definitiones, nam ei dicam pertinax. Mel ex tollit laboramus, ne fierent oportere usu.</p>
+                <p>Lorem ipsum dolor sit amet, an prima summo liberavisse ius, option similique</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="row fres">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-4">
+                <img src="../images/Layer_5.jpg" alt="Featured" class="img-responsive img-rounded pull-left gap-right center-block" />
+            </div>
+            <div class="col-sm-8 fres1">
+                <p>Lorem ipsum dolor sit amet, an prima summo liberavisse ius, option similique ea pri.</p>
+                <p> Duo cu porro dolore accumsan, saperet inimicus oportere ad nec. Sit ad errem accusam,</p>
+                <p>ei mea possim pericula definitiones, nam ei dicam pertinax. Mel ex tollit laboramus, ne fierent oportere usu.</p>
+                <p>Lorem ipsum dolor sit amet, an prima summo liberavisse ius, option similique</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="row fres">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="col-sm-4">
+                <img src="../images/Layer_3.jpg" alt="Featured" class="img-responsive img-rounded pull-left gap-right center-block" />
+            </div>
+            <div class="col-sm-8 fres1">
+                <p>Lorem ipsum dolor sit amet, an prima summo liberavisse ius, option similique ea pri.</p>
+                <p> Duo cu porro dolore accumsan, saperet inimicus oportere ad nec. Sit ad errem accusam,</p>
+                <p>ei mea possim pericula definitiones, nam ei dicam pertinax. Mel ex tollit laboramus, ne fierent oportere usu.</p>
+                <p>Lorem ipsum dolor sit amet, an prima summo liberavisse ius, option similique</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<h2>
+    OUR CITY
+</h2>
+<div class="row-fluid city">
+    <div class="col-sm-12"></div>
+</div>
+
+
+
+
+
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm0-zI5LsfbmxymSAXnmT4qHUMJGel_nA"></script>
+<script type="text/javascript">
+    var markerCount = 0;
+    var map;
+
+    //Initializes the map…
+    function initialize() {
+        var myLatlng = new google.maps.LatLng(34.745806, -92.288358);
+        var geocoder = new google.maps.Geocoder();
+        var map_canvas = document.getElementById('map_canvas');
+        var map_options = {
+            center: myLatlng,
+            zoom: 10,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        map = new google.maps.Map(map_canvas, map_options);
+
+        @foreach (var r in Model)
+         {
+        <text>geocodeAddress("@r.Street @r.City, @r.State", geocoder, "@r.Name");</text>
+            }
+    }
+
+    //When the window is loaded, run the initialize function to
+    //setup the map
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+
+    function addMarkerToMap(lat, long, htmlMarkupForInfoWindow) {
+        var infowindow = new google.maps.InfoWindow();
+        var myLatLng = new google.maps.LatLng(lat, long);
+
+        console.log(map);
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            animation: google.maps.Animation.DROP,
+        });
+
+        //Gives each marker an Id for the on click
+        markerCount++;
+
+        //Creates the event listener for clicking the marker
+        //and places the marker on the map
+        google.maps.event.addListener(marker, 'click', (function (marker, markerCount) {
+            return function () {
+                infowindow.setContent(htmlMarkupForInfoWindow);
+                infowindow.open(map, marker);
+            }
+        })(marker, markerCount));
+
+    }
+
+    function geocodeAddress(address, geocoder, htmltoshow) {
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status === google.maps.GeocoderStatus.OK) {
+                console.log();
+                addMarkerToMap(results[0].geometry.location.lat(), results[0].geometry.location.lng(), htmltoshow);
+            } else {
+                console.log('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+
+
+
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
