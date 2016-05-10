@@ -195,6 +195,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MenusController.cs" />
+    <Compile Include="Controllers\RestaurantsController.cs" />
     <Compile Include="Controllers\RestaurantsTempController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -300,7 +302,7 @@
     <Content Include="Views\RestaurantsTemp\Delete.cshtml" />
     <Content Include="Views\RestaurantsTemp\Details.cshtml" />
     <Content Include="Views\RestaurantsTemp\Edit.cshtml" />
-    <Content Include="Views\RestaurantsTemp\Index.cshtml" />
+    <Content Include="Views\Restaurant\Index.cshtml" />
     <Content Include="Views\RestaurantsTemp\CreateMenu.cshtml" />
     <Content Include="Views\RestaurantsTemp\CreateFood.cshtml" />
     <Content Include="Views\RestaurantsTemp\RestaurantList.cshtml" />
@@ -310,6 +312,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\" />
+    <Folder Include="Views\Menus\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
