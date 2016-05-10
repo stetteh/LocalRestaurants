@@ -55,7 +55,7 @@ namespace LocalEats.Models
 
     public class RestaurantVm
     {
-        public int RestautantId { get; set; }
+        public int RestaurantId { get; set; }
         public string Name { get; set; }
         public string Street { get; set; }
         public string City { get; set; }

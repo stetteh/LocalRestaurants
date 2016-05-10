@@ -22,7 +22,7 @@ namespace LocalEats.Controllers
         {
             var model = db.Restaurants.ToList().Select(r => new RestaurantVm()
             {
-                RestautantId = r.Id,
+                RestaurantId = r.Id,
                 Name = r.Name,
                 Street = r.StreetAddress,
                 City = r.City,
@@ -246,7 +246,7 @@ namespace LocalEats.Controllers
 
             var model = db.Restaurants.ToList().Select(r => new RestaurantVm()
             {
-                RestautantId = r.Id,
+                RestaurantId = r.Id,
                 Name = r.Name,
                 Street = r.StreetAddress,
                 City = r.City,

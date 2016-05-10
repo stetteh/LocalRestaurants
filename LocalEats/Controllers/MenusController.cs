@@ -10,12 +10,6 @@ namespace LocalEats.Controllers
     public class MenusController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-        // GET: Menus
-        public ActionResult Index()
-        {
-            return View();
-        }
-
 
         [HttpGet]
         public ActionResult CreateMenu(int restaurantid)

@@ -233,6 +233,10 @@
     <Compile Include="Migrations\201605091651295_photos.Designer.cs">
       <DependentUpon>201605091651295_photos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605102144512_newstuff.cs" />
+    <Compile Include="Migrations\201605102144512_newstuff.Designer.cs">
+      <DependentUpon>201605102144512_newstuff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateRestaurantVM.cs" />
@@ -309,6 +313,8 @@
     <Content Include="Views\RestaurantsTemp\UploadImages.cshtml" />
     <Content Include="Views\RestaurantsTemp\AddPhoto.cshtml" />
     <Content Include="Views\Restaurants\Index.cshtml" />
+    <Content Include="Views\Restaurants\Create.cshtml" />
+    <Content Include="Views\Restaurants\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -347,6 +353,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605091651295_photos.resx">
       <DependentUpon>201605091651295_photos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605102144512_newstuff.resx">
+      <DependentUpon>201605102144512_newstuff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

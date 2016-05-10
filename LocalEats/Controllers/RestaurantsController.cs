@@ -20,7 +20,7 @@ namespace LocalEats.Controllers
         {
             var model = db.Restaurants.ToList().Select(r => new RestaurantVm()
             {
-                RestautantId = r.Id,
+                RestaurantId = r.Id,
                 Name = r.Name,
                 Street = r.StreetAddress,
                 City = r.City,
@@ -51,7 +51,8 @@ namespace LocalEats.Controllers
             {
                 db.Restaurants.Add(restaurant);
                 db.SaveChanges();
-                return RedirectToAction("CreateMenu", new { restaurantid = restaurant.Id });
+                return RedirectToAction("CreateMenu", "Menus",new { restaurantid = restaurant.Id });
+                //return RedirectToAction("RestaurantPage");
             }
             return View(restaurant);
         }
@@ -134,7 +135,7 @@ namespace LocalEats.Controllers
 
             var model = db.Restaurants.ToList().Select(r => new RestaurantVm()
             {
-                RestautantId = r.Id,
+                RestaurantId = r.Id,
                 Name = r.Name,
                 Street = r.StreetAddress,
                 City = r.City,
@@ -211,5 +212,9 @@ namespace LocalEats.Controllers
             return RedirectToAction("RestaurantList");
         }
 
+        public ActionResult RestaurantPage()
+        {
+            return View();
+        }
     }
 }
