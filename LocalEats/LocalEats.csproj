@@ -237,6 +237,10 @@
     <Compile Include="Migrations\201605102144512_newstuff.Designer.cs">
       <DependentUpon>201605102144512_newstuff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605102355487_featuresoff.cs" />
+    <Compile Include="Migrations\201605102355487_featuresoff.Designer.cs">
+      <DependentUpon>201605102355487_featuresoff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateRestaurantVM.cs" />
@@ -304,7 +308,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\RestaurantsTemp\Create.cshtml" />
     <Content Include="Views\RestaurantsTemp\Delete.cshtml" />
-    <Content Include="Views\RestaurantsTemp\Details.cshtml" />
+    <Content Include="Views\Restaurants\RestaurantDetails.cshtml" />
     <Content Include="Views\RestaurantsTemp\Edit.cshtml" />
     <Content Include="Views\RestaurantsTemp\Index.cshtml" />
     <Content Include="Views\RestaurantsTemp\CreateMenu.cshtml" />
@@ -357,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605102144512_newstuff.resx">
       <DependentUpon>201605102144512_newstuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605102355487_featuresoff.resx">
+      <DependentUpon>201605102355487_featuresoff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

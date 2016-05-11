@@ -14,7 +14,6 @@ namespace LocalEats.Models
         public string State { get; set; }
         public string Zipcode { get; set; }
         public string Description { get; set; }
-        public string Features { get; set; }
         public string PhoneNumber { get; set; }
         public Category Category { get; set; }
     }
@@ -62,7 +61,6 @@ namespace LocalEats.Models
         public string State { get; set; }
         public string Zipcode { get; set; }
         public string Description { get; set; }
-        public string Features { get; set; }
         public string  PhoneNumber { get; set; }
         public string Photo { get; set; }
         public Category Category { get; set; }
@@ -89,5 +87,11 @@ namespace LocalEats.Models
     {
         public int Id { get; set; }
         public string ImageUrl { get; set; }
+    }
+
+    public class RestaurantDetailsVm
+    {
+        public int RestaurantId { get; set; }
+        public string Name { get; set; }
     }
 }

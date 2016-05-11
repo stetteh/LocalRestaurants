@@ -51,14 +51,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Hours)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Hours)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </dt>
 
@@ -77,6 +69,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Add Photo", "AddPhoto", "Restaurants", new { id = Model.Id }, null)
+    @Html.ActionLink("Add Menu", "CreateMenu", "Menus", new { id = Model.Id }, null)
+    @Html.ActionLink("Add Drinks", "CreateDrink", "Menus", new { id = Model.Id }, null)
+    @Html.ActionLink("Restaurant List", "RestaurantList")
 </p>

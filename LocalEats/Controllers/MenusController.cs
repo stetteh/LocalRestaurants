@@ -12,10 +12,13 @@ namespace LocalEats.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         [HttpGet]
-        public ActionResult CreateMenu(int restaurantid)
+        public ActionResult CreateMenu(int id)
         {
-            var rest = db.Restaurants.Find(restaurantid);
-            var model = new CreateMenuVm() {RestaurantId = rest.Id, Name = rest.Name};
+
+            var model = new CreateMenuVm();
+            var restaurant = db.Restaurants.Find(id);
+            model.RestaurantId = restaurant.Id;
+             model.Name = restaurant.Name;
             return View(model);
         }
 
@@ -71,10 +74,13 @@ namespace LocalEats.Controllers
         }
 
         [HttpGet]
-        public ActionResult CreateDrink(int restaurantid)
+        public ActionResult CreateDrink(int id)
         {
-            var rest = db.Restaurants.Find(restaurantid);
-            var model = new CreateDrinkVm() {RestaurantId = rest.Id, Name = rest.Name};
+
+            var model = new CreateDrinkVm();
+            var restaurant = db.Restaurants.Find(id);
+            model.RestaurantId = restaurant.Id;
+            model.Name = restaurant.Name;
             return View(model);
         }
 

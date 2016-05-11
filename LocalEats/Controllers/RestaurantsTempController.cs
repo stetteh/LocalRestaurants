@@ -30,7 +30,6 @@ namespace LocalEats.Controllers
                 Zipcode = r.Zipcode,
               
                 Description = r.Description,
-                Features = r.Features,
                 Category = r.Category,
                 PossibleMenus = r.Menus.Select(m => new MenuVm() { Id = m.Id, Name = m.Name, Type = m.Type }),
                 PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name })

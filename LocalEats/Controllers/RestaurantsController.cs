@@ -28,7 +28,6 @@ namespace LocalEats.Controllers
                 Zipcode = r.Zipcode,
                 PhoneNumber = r.Zipcode,
                 Description = r.Description,
-                Features = r.Features,
                 Category = r.Category,
                 PossibleMenus = r.Menus.Select(m => new MenuVm() {Id = m.Id, Name = m.Name, Type = m.Type}),
                 PossibleDrinks = r.Drinks.Select(d => new DrinkVm() {Id = d.Id, Name = d.Name})
@@ -42,7 +41,7 @@ namespace LocalEats.Controllers
             return View();
         }
 
-        //Post Restaurant 
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,StreetAddress,City,State,Zipcode,Hours,PhoneNumber,Category")] Restaurant restaurant)
@@ -51,12 +50,25 @@ namespace LocalEats.Controllers
             {
                 db.Restaurants.Add(restaurant);
                 db.SaveChanges();
-                return RedirectToAction("CreateMenu", "Menus",new { restaurantid = restaurant.Id });
-                //return RedirectToAction("RestaurantPage");
+                return RedirectToAction("RestaurantDetails");
             }
             return View(restaurant);
         }
+        
+        public ActionResult RestaurantDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Restaurant restaurant = db.Restaurants.Find(id);
+            if (restaurant == null)
+            {
+                return HttpNotFound();
+            }
 
+            return View(restaurant);
+        }
         // GET: Restaurants/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -143,7 +155,6 @@ namespace LocalEats.Controllers
                 Zipcode = r.Zipcode,
                 PhoneNumber = r.PhoneNumber,
                 Description = r.Description,
-                Features = r.Features,
                 Category = r.Category,
                 PossibleMenus = r.Menus.Select(m => new MenuVm() { Id = m.Id, Name = m.Name, Type = m.Type }),
                 PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name }),
