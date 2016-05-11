@@ -33,7 +33,7 @@ namespace LocalEats.Controllers
                 {
                     Restaurant = restaurant,
                     Name = model.Name,
-                    Description = model.Description,
+                    //Description = model.Description,
                     Type = model.Type
                 };
                 restaurant.Menus.Add(newMenu);
@@ -70,7 +70,7 @@ namespace LocalEats.Controllers
                 menu.Foods.Add(newfood);
                 db.SaveChanges();
             }
-            return Content("done");
+            return RedirectToAction("CreateMenu");
         }
 
         [HttpGet]
