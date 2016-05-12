@@ -189,22 +189,24 @@ namespace LocalEats.Controllers
                 return HttpNotFound();
             }
 
-            var model = db.Restaurants.ToList().Select(r => new RestaurantVm()
-            {
-                RestaurantId = r.Id,
-                Name = r.Name,
-                Street = r.StreetAddress,
-                City = r.City,
-                State = r.State,
-                Zipcode = r.Zipcode,
-                PhoneNumber = r.Zipcode,
-                Description = r.Description,
-                Category = r.Category,
-                PossibleMenus = r.Menus.Select(m => new MenuVm() { Id = m.Id, Name = m.Name, Type = m.Type }),
-                PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name }),
-                 PossiblePhotos = r.Photos.Select(p => new PhotoVm() { Id = p.Id, ImageUrl = "https://localdinning.blob.core.windows.net/" + p.Image })
-            });
-            return View(model);
+            //var model = db.Restaurants.ToList().Select(r => new RestaurantVm()
+            //{
+            //    RestaurantId = r.Id,
+            //    Name = r.Name,
+            //    Street = r.StreetAddress,
+            //    City = r.City,
+            //    State = r.State,
+            //    Zipcode = r.Zipcode,
+            //    PhoneNumber = r.Zipcode,
+            //    Description = r.Description,
+            //    Category = r.Category,
+            //    PossibleMenus = r.Menus.Select(m => new MenuVm() { Id = m.Id, Name = m.Name, Type = m.Type }),
+            //    PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name }),
+            //     PossiblePhotos = r.Photos.Select(p => new PhotoVm() { Id = p.Id, ImageUrl = "https://localdinning.blob.core.windows.net/" + p.Image })
+            //});
+
+            
+            return View(restaurant);
         }
 
         [HttpGet]

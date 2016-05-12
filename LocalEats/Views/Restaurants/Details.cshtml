@@ -1,4 +1,4 @@
-﻿@model LocalEats.Models.RestaurantVm
+﻿@model LocalEats.Models.Restaurant
 
 @{
     ViewBag.Title = "Details";
@@ -11,11 +11,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.RestaurantId)
+            @Html.DisplayNameFor(model => model.Id)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.RestaurantId)
+            @Html.DisplayFor(model => model.Id)
         </dd>
 
         <dt>
@@ -27,11 +27,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Street)
+            @Html.DisplayNameFor(model => model.StreetAddress)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Street)
+            @Html.DisplayFor(model => model.StreetAddress)
         </dd>
 
         <dt>
@@ -75,22 +75,22 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Photo)
+            @Html.DisplayNameFor(model => model.Photos)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Photo)
+            @Html.DisplayFor(model => model.Photos)
         </dd>
         <dd>
-            @Html.DisplayNameFor(model => model.PossibleMenus)
+            @Html.DisplayNameFor(model => model.Menus)
         </dd>
         <dd>
-            @Html.DisplayFor(model => model.PossibleMenus)
+            @Html.DisplayFor(model => model.Menus)
         </dd>
         <dd>
-            @Html.DisplayNameFor(model => model.PossibleDrinks)
+            @Html.DisplayNameFor(model => model.Drinks)
         </dd>
         <dd>
-            @Html.DisplayFor(model => model.PossibleDrinks)
+            @Html.DisplayFor(model => model.Drinks)
         </dd>
        
 
