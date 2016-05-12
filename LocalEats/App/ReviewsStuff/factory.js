@@ -9,11 +9,19 @@
 
     function factory($http) {
         var service = {
-            getData: getData
+            getReview: getReview,
+            saveReview: saveReview
         };
 
         return service;
 
-        function getData() { }
+        function getReview() {
+            return $http.get('/Reviews/ShowReviews');
+        }
+
+        function saveReview(newReview) {
+            console.log('factory save review')
+            return $http.post('/Reviews/SaveReview', newReview);
+        }
     }
 })();

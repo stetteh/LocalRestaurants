@@ -13,7 +13,7 @@ namespace LocalEats.Controllers
 
         // GET: Reviews
         [HttpGet]
-        public ActionResult CreateReview(int id)
+        public ActionResult GetReview(int id)
         {
             var restaurant = db.Restaurants.Find(id);
 
@@ -28,7 +28,7 @@ namespace LocalEats.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateMenu(CreateReviewVm model)
+        public ActionResult SaveReview(CreateReviewVm model)
         {
             if (ModelState.IsValid)
             {
