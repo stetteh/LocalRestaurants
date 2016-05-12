@@ -32,7 +32,7 @@ namespace LocalEats.Models
 
         public System.Data.Entity.DbSet<LocalEats.Models.Restaurant> Restaurants { get; set; }
         public System.Data.Entity.DbSet<LocalEats.Models.Menu> Menus { get; set; }
-
+        
         public System.Data.Entity.DbSet<LocalEats.Models.MenuVm> MenuVms { get; set; }
     }
 }
