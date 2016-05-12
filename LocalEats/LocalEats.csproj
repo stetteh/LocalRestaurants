@@ -241,6 +241,10 @@
     <Compile Include="Migrations\201605102355487_featuresoff.Designer.cs">
       <DependentUpon>201605102355487_featuresoff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605121825090_reviewmodel.cs" />
+    <Compile Include="Migrations\201605121825090_reviewmodel.Designer.cs">
+      <DependentUpon>201605121825090_reviewmodel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateRestaurantVM.cs" />
@@ -369,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605102355487_featuresoff.resx">
       <DependentUpon>201605102355487_featuresoff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121825090_reviewmodel.resx">
+      <DependentUpon>201605121825090_reviewmodel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

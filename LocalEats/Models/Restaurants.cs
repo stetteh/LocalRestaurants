@@ -46,6 +46,7 @@ namespace LocalEats.Models
         public int Id { get; set; }
         public string Text { get; set; }
         public int Score { get; set; }
+        public DateTime Date { get; set; }
         public ApplicationUser User { get; set; }
         public virtual Restaurant Restaurant { get; set; }
     }

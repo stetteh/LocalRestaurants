@@ -93,4 +93,23 @@ namespace LocalEats.Models
         public int RestaurantId { get; set; }
         public string Name { get; set; }
     }
+
+    public class CreateReviewVm
+    {
+        public int RestaurantId { get; set; }
+        public int Id { get; set; }
+        public string Text { get; set; }
+        public DateTime Date { get; set; }
+        public int Score { get; set; }
+        public ApplicationUser User { get; set; }
+    }
+
+    public class ReviewVm
+    {
+        public int Id { get; set; }
+        public string Text { get; set; }
+        public int Score { get; set; }
+        public DateTime Date { get; set; }
+        public ApplicationUser User { get; set; }
+    }
 }
