@@ -128,13 +128,10 @@ namespace LocalEats.Controllers
 
         public ActionResult RestaurantList(string restaurantCategory)
         {
-            var RestLst = new List<string>();
 
-            var RestQry = from d in db.Restaurants
-                orderby d.City 
-                select d.City;
-            RestLst.AddRange(RestQry.Distinct());
-            ViewBag.restaurantCategory = new SelectList(RestLst);
+            var restQry = db.Restaurants.OrderBy(d => d.Category).Select(d => d.Category.ToString()).Distinct();
+
+            ViewBag.restaurantCategory = new SelectList(restQry);
 
             var model = from m in db.Restaurants.ToList().Select(r => new RestaurantVm()
             {
