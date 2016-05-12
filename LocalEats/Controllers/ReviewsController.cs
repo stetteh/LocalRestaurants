@@ -11,7 +11,7 @@ namespace LocalEats.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Reviews
+
         [HttpGet]
         public ActionResult GetReview(int id)
         {

@@ -16,7 +16,7 @@
         return service;
 
         function getReview() {
-            return $http.get('/Reviews/ShowReviews');
+            return $http.get('/Restaurants/Details');
         }
 
         function saveReview(newReview) {
