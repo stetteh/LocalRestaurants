@@ -5,12 +5,12 @@
 }
 
 @using (Html.BeginForm("RestaurantList", "Restaurants", FormMethod.Get))
-{
-    <p>
-        City: @Html.TextBox("searchCity")
-        <input type="submit" value="Search" />
+{    <p>
+        City: @Html.DropDownList("restaurantCategory", "All")
+        <input type="submit" value="Filter" />
     </p>
 }
+
 <h2>RestaurantList</h2>
 <div class="container-fluid list">
     <div class="row-fluid">
@@ -27,6 +27,7 @@
                 <p style="color: blue">
                     <b>@b.Name</b>
                 </p>
+                <p>@b.Category</p>
                 <p>@b.Street</p>
                 <p>@b.City, @b.State, @b.Zipcode</p>
             </div>

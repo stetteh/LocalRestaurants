@@ -1,10 +1,11 @@
-﻿@model LocalEats.Models.CreateMenuVm
+﻿@using LocalEats.Models
+@model LocalEats.Models.CreateDrinkVm
 
 @{
-    ViewBag.Title = "CreateMenu";
+    ViewBag.Title = "CreateDrink";
 }
 
-<h2>CreateMenu</h2>
+<h2>CreateDrink</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,7 +13,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>CreateMenuVm</h4>
+        <h4>CreateDrinkVm</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @*<div class="form-group">
@@ -30,12 +31,19 @@
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EnumDropDownListFor(model => model.Type, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -48,7 +56,7 @@
 }
 
 <div>
-  @Html.ActionLink("Restaurant Details", "RestaurantDetails" , "Restaurants", new { restaurantid = Model.RestaurantId }, null)
+    @Html.ActionLink("Restaurant Details", "RestaurantDetails", "Restaurants", new { restaurantid = Model.RestaurantId }, null)
 </div>
 
 @section Scripts {

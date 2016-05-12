@@ -50,25 +50,19 @@ namespace LocalEats.Controllers
             {
                 db.Restaurants.Add(restaurant);
                 db.SaveChanges();
-                return RedirectToAction("RestaurantDetails");
+                return RedirectToAction("RestaurantDetails", new { restaurantid = restaurant.Id });
             }
             return View(restaurant);
         }
         
-        public ActionResult RestaurantDetails(int? id)
+        public ActionResult RestaurantDetails(int restaurantid)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Restaurant restaurant = db.Restaurants.Find(id);
-            if (restaurant == null)
-            {
-                return HttpNotFound();
-            }
-
-            return View(restaurant);
+            var model = db.Restaurants.Find(restaurantid);
+            model.Id = restaurantid;  
+    
+            return View(model);
         }
+
         // GET: Restaurants/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -132,20 +126,17 @@ namespace LocalEats.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult RestaurantList()
+        public ActionResult RestaurantList(string restaurantCategory)
         {
+            var RestLst = new List<string>();
 
-            //var result = from e in db.Restaurants
-            //    select e;
+            var RestQry = from d in db.Restaurants
+                orderby d.City 
+                select d.City;
+            RestLst.AddRange(RestQry.Distinct());
+            ViewBag.restaurantCategory = new SelectList(RestLst);
 
-            //if (!String.IsNullOrEmpty(searchCity))
-            //{
-            //    result = result.Where(s => s.City.StartsWith(searchCity));
-            //}
-
-            //return View(result);
-
-            var model = db.Restaurants.ToList().Select(r => new RestaurantVm()
+            var model = from m in db.Restaurants.ToList().Select(r => new RestaurantVm()
             {
                 RestaurantId = r.Id,
                 Name = r.Name,
@@ -159,7 +150,31 @@ namespace LocalEats.Controllers
                 PossibleMenus = r.Menus.Select(m => new MenuVm() { Id = m.Id, Name = m.Name, Type = m.Type }),
                 PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name }),
                 PossiblePhotos = r.Photos.Select(p => new PhotoVm() { Id = p.Id, ImageUrl = "https://localdinning.blob.core.windows.net/" + p.Image })
-            });
+            })
+
+            select m;
+
+            if (!String.IsNullOrEmpty(restaurantCategory))
+            {
+                model = model.Where(x => x.City == restaurantCategory);
+
+            }
+
+            // db.Restaurants.ToList().Select(r => new RestaurantVm()
+            //{
+            //    RestaurantId = r.Id,
+            //    Name = r.Name,
+            //    Street = r.StreetAddress,
+            //    City = r.City,
+            //    State = r.State,
+            //    Zipcode = r.Zipcode,
+            //    PhoneNumber = r.PhoneNumber,
+            //    Description = r.Description,
+            //    Category = r.Category,
+            //    PossibleMenus = r.Menus.Select(m => new MenuVm() { Id = m.Id, Name = m.Name, Type = m.Type }),
+            //    PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name }),
+            //    PossiblePhotos = r.Photos.Select(p => new PhotoVm() { Id = p.Id, ImageUrl = "https://localdinning.blob.core.windows.net/" + p.Image })
+            //});
 
             return View(model);
         }

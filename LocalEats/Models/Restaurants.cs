@@ -57,13 +57,15 @@ namespace LocalEats.Models
         Asian,
         Mediterranean,
         Vegeterain,
-        Southern,  
+        Southern, 
+        Italian,
+        Mexican
     }
 
     public enum DrinkType
     {
         Alcohol = 1,
-        NonAlcohol,
+        NonAlcoholic,
         Juice,
         HotDrinks,
         SoftDrinks,      
