@@ -322,6 +322,7 @@
     <Content Include="Views\Menus\CreateMenu.cshtml" />
     <Content Include="Views\Menus\CreateFood.cshtml" />
     <Content Include="Views\Menus\CreateDrink.cshtml" />
+    <Content Include="Views\Restaurants\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
