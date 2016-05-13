@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
+using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 using LocalEats.Models;
 
 namespace LocalEats.Controllers
@@ -15,16 +18,16 @@ namespace LocalEats.Controllers
         [HttpGet]
         public ActionResult GetReview(int id)
         {
-            var restaurant = db.Restaurants.Find(id);
-
-            if (restaurant == null)
+            var rest = db.Restaurants.Find(id);
+            if (rest == null)
             {
-                return HttpNotFound("No Restaurant Found");
+                return Content("No restaurant Found.");
             }
-            var model = new CreateReviewVm();
-            restaurant.Id = model.RestaurantId;
 
+            var model = new CreateReviewVm();
+          
             return Json(model, JsonRequestBehavior.AllowGet);
+
         }
 
         [HttpPost]
@@ -32,19 +35,25 @@ namespace LocalEats.Controllers
         {
             if (ModelState.IsValid)
             {
-                var restaurant = db.Restaurants.Find(model.RestaurantId);
+                return Json(new {Message = "Not Found"});
 
-                var newReview = new Review()
-                {
-                    Restaurant = restaurant,
-                    Text = model.Text,
-                    Date = model.Date,
-                    
-                };
-                restaurant.Reviews.Add(newReview);
-                db.SaveChanges();
             }
-            return Json(model);
+
+            var newReview = new Review()
+            {
+                Text = model.Text,
+                Date = model.Date
+            };
+            db.Reviews.Add(newReview);
+            db.SaveChanges();
+
+            var result = new
+            {
+                newReview.Text,
+                newReview.Date
+            };
+
+            return Json(result);
         }
     }
 }

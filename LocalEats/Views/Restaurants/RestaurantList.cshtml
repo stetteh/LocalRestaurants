@@ -25,7 +25,8 @@
                     }
                 }
                 <p style="color: blue">
-                    <b>@b.Name</b>
+                    <b>@b.Name </b>
+                    @Html.ActionLink("Details", "Details", new { id = b.RestaurantId })
                 </p>
                 <p>@b.Category</p>
                 <p>@b.Street</p>

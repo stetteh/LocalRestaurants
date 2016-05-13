@@ -3,22 +3,22 @@
 
     angular
         .module('app')
-        .controller('ReviewController', ReviewsController);
+        .controller('ReviewsController', ReviewsController);
 
-    ReviewsController.$inject = ['$scope', 'Reviewfactory'];
+    ReviewsController.$inject = ['$scope','$location', 'Reviewfactory'];
 
-    function ReviewsController($scope, Reviewfactory) {
+    function ReviewsController($scope,$location, Reviewfactory) {
         /* jshint validthis:true */
-        //var vm = this;
-        $scope.title = 'ReviewController';
+  
+     
 
         activate();
 
         $scope.saveReview = function() {
             console.log('called controller saveReview()');
             var newReview = {
-                Text: $scope.newReview.Text,
-                Date: $scope.newReview.Date
+                Text: data.data.Text,
+                Date: data.data.Date
             };
             Reviewfactory.saveReview(newReview).then(function(res) {
                 $scope.newReview.Text = "";
