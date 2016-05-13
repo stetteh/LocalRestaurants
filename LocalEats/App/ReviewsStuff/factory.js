@@ -9,14 +9,14 @@
 
     function factory($http) {
         var service = {
-            getReview: getReview,
+            getAllReviews: getAllReviews,
             saveReview: saveReview
         };
 
         return service;
 
-        function getReview() {
-            return $http.get('/Restaurants/Details');
+        function getAllReviews() {
+            return $http.get('/Reviews/GetAllReviews');
         }
 
         function saveReview(newReview) {

@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('app')
+        .module('localeatsapp')
         .controller('ReviewsController', ReviewsController);
 
-    ReviewsController.$inject = ['$scope','$location', 'Reviewfactory'];
+    ReviewsController.$inject = ['$scope', 'Reviewfactory'];
 
-    function ReviewsController($scope,$location, Reviewfactory) {
+    function ReviewsController($scope, Reviewfactory) {
         /* jshint validthis:true */
   
      
@@ -16,11 +16,11 @@
 
         $scope.saveReview = function() {
             console.log('called controller saveReview()');
-            var newReview = {
-                Text: data.data.Text,
-                Date: data.data.Date
+            var newreview = {
+                Text: $scope.newReview.Text,
+                Date: $scope.newreview.Date
             };
-            Reviewfactory.saveReview(newReview).then(function(res) {
+            Reviewfactory.saveReview(newreview).then(function(res) {
                 $scope.newReview.Text = "";
                 $scope.newReview.Date = "";
 

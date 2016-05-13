@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="localeatsapp" ng-cloak>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,21 +32,21 @@
     <div class="container-fluid body-content">
         @RenderBody()
 
-        <footer>
+        @*<footer>
             <p>Lorem ipsum dolor sit amet, an prima summo liberavisse ius, option similique ea pri.</p>
             <p> Duo cu porro dolore accumsan, saperet inimicus oportere ad nec. Sit ad errem accusam,</p>
             <p>ei mea possim pericula definitiones, nam ei dicam pertinax. Mel ex tollit laboramus, ne fierent oportere usu.</p>
             <p>&copy; @DateTime.Now.Year - Dine in Arkansas</p>
-        </footer>
+        </footer>*@
     </div>  
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-
+ 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.10/angular-route.min.js"></script>
-
-<script src="~/app/localeatsapp.js"></script>
-@Scripts.Render("~/bundles/myapp")
+<script src="~/App/localeatsapp.js"></script>
+    <script src="~/App/ReviewsStuff/factory.js"></script>
+    <script src="~/App/ReviewsStuff/ReviewsController.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
 @RenderSection("scripts", required: false)
 </body>
 </html>

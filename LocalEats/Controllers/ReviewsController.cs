@@ -14,6 +14,18 @@ namespace LocalEats.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        public ActionResult GetAllReviews()
+        {
+            var model = db.Reviews.Select(r => new
+            {
+                r.Text,
+                r.Date
+            });
+
+
+            return Json(model, JsonRequestBehavior.AllowGet);
+        }
+
 
         [HttpGet]
         public ActionResult GetReview(int id)
