@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Services.Description;
 using LocalEats.Models;
+using Microsoft.AspNet.Identity;
 
 namespace LocalEats.Controllers
 {
@@ -37,7 +38,7 @@ namespace LocalEats.Controllers
             }
 
             var model = new CreateReviewVm();
-          
+
             return Json(model, JsonRequestBehavior.AllowGet);
 
         }
@@ -45,27 +46,35 @@ namespace LocalEats.Controllers
         [HttpPost]
         public ActionResult SaveReview(CreateReviewVm model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return Json(new {Message = "Not Found"});
+                return Json(new { Message = "Missing Information." });
 
             }
+
+            var userid = User.Identity.GetUserId();
 
             var newReview = new Review()
             {
                 Text = model.Text,
-                Date = model.Date
+                Date = DateTime.Now,
+                CurrentUser = db.Users.Find(userid),
+                Restaurant = db.Restaurants.Find(model.RestaurantId),
+                Score = model.Score,
+
             };
             db.Reviews.Add(newReview);
             db.SaveChanges();
 
-            var result = new
-            {
-                newReview.Text,
-                newReview.Date
-            };
 
-            return Json(result);
+            return Json(new
+            {
+                newReview.Id,
+                newReview.Date,
+                newReview.CurrentUser.UserName,
+                RestaurantId = newReview.Restaurant.Id,
+                newReview.Score
+            });
         }
     }
 }

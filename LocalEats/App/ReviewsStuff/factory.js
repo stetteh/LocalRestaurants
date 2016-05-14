@@ -15,12 +15,11 @@
 
         return service;
 
-        function getAllReviews() {
+        function getAllReviews(restaurantId) {
             return $http.get('/Reviews/GetAllReviews');
         }
 
         function saveReview(newReview) {
-            console.log('factory save review')
             return $http.post('/Reviews/SaveReview', newReview);
         }
     }

@@ -98,21 +98,23 @@
 </div>
 
 
-<h2>{{ 9 == 100 }}</h2>
-<div ng-controller="ReviewsController">
+<div ng-controller="ReviewsController" ng-init="restaurantId=@Model.Id">
     <div ng-repeat="r in Reviews">
         {{ r.Text }}
         {{ r.Date }}
+        {{ r.Score }}
+        {{ r.Id }}
+        {{ r.RestaurantId }}
     </div>
-    <form>
+    <div>
         <div class="form-group">
-            Text: <input type="text" name="text" value="" ng-model="newReview.Text" />
+            Text: <input type="text" name="Text" value="" ng-model="newReview.Text"/>
         </div>
         <div class="form-group">
-            Date: <input type="date" name="Description" value="" ng-model="newReview.Date" />
+            Score: <input type="number" name="Score" value="" ng-model="newReview.Score"/>
         </div>
-        <input class="btn btn-primary" type="button" ng-click="saveReview()" value="Save Review" />
-    </form>
+        <input class="btn btn-primary" type="button" ng-click="saveReview()" value="Save Review"/>
+    </div>
 
 </div>
 

@@ -14,22 +14,22 @@
 
         activate();
 
-        $scope.saveReview = function() {
-            console.log('called controller saveReview()');
-            var newreview = {
-                Text: $scope.newReview.Text,
-                Date: $scope.newreview.Date
-            };
-            Reviewfactory.saveReview(newreview).then(function(res) {
+        $scope.saveReview = function () {
+            $scope.newReview.RestaurantId = $scope.restaurantId;
+            console.log($scope.newReview);
+            Reviewfactory.saveReview($scope.newReview).then(function(res) {
                 $scope.newReview.Text = "";
-                $scope.newReview.Date = "";
+                $scope.newReview.Score = "";
+
+                console.log(res.data);
+
 
                 $scope.Reviews.push(res.data);
             });
         }
 
         function activate() {
-            Reviewfactory.getReview().then(function(res) {
+            Reviewfactory.getAllReviews($scope.restaurantId).then(function(res) {
                 console.log(res.data);
                 $scope.Reviews = res.data;
             });
