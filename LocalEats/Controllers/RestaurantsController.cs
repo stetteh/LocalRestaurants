@@ -237,6 +237,7 @@ namespace LocalEats.Controllers
 
             return View(model);
         }
+
         [HttpPost]
         public ActionResult AddPhoto(AddPhotoVM newPhoto)
         {

@@ -8,8 +8,7 @@ body {
     padding-bottom: 20px;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
-    letter-spacing: 3px;
-    font-size: 15px;
+    font-size: 18px;
     height:100%;
 }
 
@@ -39,7 +38,7 @@ textarea {
     top: 50px;
     left: 0;
     width: 100%;
-    height: 400px;
+    height: 500px;
     margin: 0;
     padding: 0;
 }
@@ -80,20 +79,16 @@ textarea {
     
 }
 .fres1 {
-     background-color: #131351;
-     border-radius: 20px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    background-color: #c0392b;
+    padding-bottom: 15px;
 }
 .gap-right {
     margin-right: 10px;
 }
-.city {
-     background-image: url("../images/Layer_4.jpg");
-     height: 400px;
-     background-size: cover;
-     background-position: center center;
+.citybg {
+     background-image: url("../images/lr.jpg");
      background-repeat: no-repeat;
+     height: 400px; 
 }
 h2 {
     text-align: center;
@@ -104,13 +99,46 @@ h2 {
     padding-bottom: 50px;
 }
 
-footer {
+.footer {
+    margin-top: 0px;
     text-align: center;
-    color: white;
-    background-color: #333333;
-    padding-top: 10px;
-    bottom: 0;
-    position: fixed;
-    width: 100%;
- 
+    color: #000000;
 }
+
+.navbar {
+    height: 140px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    background-color: #c0392b;
+
+}
+.navbar-inverse .navbar-nav > li > a {
+     color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+     color: #959595;
+}
+
+.navbar-nav {
+    padding-top: 25px;
+   
+    
+}
+
+.logo {
+    display: block;
+}
+
+.logo img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+}
+p {
+    font-size: 15px;
+}
+

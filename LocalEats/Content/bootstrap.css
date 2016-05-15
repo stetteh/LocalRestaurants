@@ -497,10 +497,10 @@ h6 small,
 
 h1,
 h2,
-h3 {
+/*h3 {
   margin-top: 20px;
   margin-bottom: 10px;
-}
+}*/
 
 h4,
 h5,

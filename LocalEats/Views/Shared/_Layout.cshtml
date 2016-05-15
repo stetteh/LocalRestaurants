@@ -9,44 +9,48 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.10/angular.min.js"></script>
 </head>
 <body>
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            @*@Html.ActionLink("Application name", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})*@
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-            </ul>
-            @Html.Partial("_LoginPartial")
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*@Html.ActionLink("Application name", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})*@
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Restaurants")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+                <div class="logo"><img src="../images/logo.png" alt="logo" class="img-responsive" /></div>
+
+            </div>
+
         </div>
     </div>
+<div class="container-fluid body-content">
+    @RenderBody()
 </div>
-    <div class="container-fluid body-content">
-        @RenderBody()
 
-        @*<footer>
-            <p>Lorem ipsum dolor sit amet, an prima summo liberavisse ius, option similique ea pri.</p>
-            <p> Duo cu porro dolore accumsan, saperet inimicus oportere ad nec. Sit ad errem accusam,</p>
-            <p>ei mea possim pericula definitiones, nam ei dicam pertinax. Mel ex tollit laboramus, ne fierent oportere usu.</p>
-            <p>&copy; @DateTime.Now.Year - Dine in Arkansas</p>
-        </footer>*@
-    </div>  
+<div class="container">
+    <div class="footer">
+        <p>&copy; @DateTime.Now.Year - Dine in Arkansas</p>
+    </div>
+</div>
 
-    @Scripts.Render("~/bundles/jquery")
- 
+
+
+@Scripts.Render("~/bundles/jquery")
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.10/angular-route.min.js"></script>
-<script src="~/App/localeatsapp.js"></script>
+    <script src="~/App/localeatsapp.js"></script>
     <script src="~/App/ReviewsStuff/factory.js"></script>
     <script src="~/App/ReviewsStuff/ReviewsController.js"></script>
     @Scripts.Render("~/bundles/bootstrap")
-@RenderSection("scripts", required: false)
+    @RenderSection("scripts", required: false)
 </body>
 </html>
