@@ -7,127 +7,43 @@
 <h2>Details</h2>
 
 <div>
-    <h4>RestaurantVm</h4>
-    <hr/>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
+    <h4>Restaurant</h4>
+    <hr />
 
-        <dd>
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StreetAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StreetAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.State)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.State)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Zipcode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Zipcode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Photos)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Photos)
-        </dd>
-        <dd>
-            @Html.DisplayNameFor(model => model.Menus)
-        </dd>
-        <dd>
-            @Html.DisplayFor(model => model.Menus)
-        </dd>
-        <dd>
-            @Html.DisplayNameFor(model => model.Drinks)
-        </dd>
-        <dd>
-            @Html.DisplayFor(model => model.Drinks)
-        </dd>
-
-
-    </dl>
-</div>
-
-
-<div ng-controller="ReviewsController" ng-init="restaurantId=@Model.Id">
-    <div ng-repeat="r in Reviews">
-        {{ r.Text }}
-        {{ r.Date }}
-        {{ r.Score }}
-        {{ r.Id }}
-        {{ r.RestaurantId }}
-    </div>
-    <div>
-        <div class="form-group">
-            Text: <input type="text" name="Text" value="" ng-model="newReview.Text"/>
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-3">
+            <div class="col-sm-4">
+                <h3>@Html.DisplayFor(model => model.Name)</h3>
+                <br/>
+                <img src="../images/Layer_5.jpg" alt="Featured" class="img-responsive img-rounded pull-left gap-right center-block"/>
+            </div>
+            <div class="col-sm-7">
+                <p>@Html.DisplayFor(model => model.Category)</p>
+                <p>@Html.DisplayFor(model => model.StreetAddress)</p>
+                <p>@Html.DisplayFor(model => model.City), @Html.DisplayFor(model => model.State), @Html.DisplayFor(model => model.Zipcode)</p>
+                <p>@Html.DisplayFor(model => model.PhoneNumber)</p>
+                <p>@Html.DisplayFor(model => model.Description)</p>
+            </div>
         </div>
-        <div class="form-group">
-            Score: <input type="number" name="Score" value="" ng-model="newReview.Score"/>
-        </div>
-        <input class="btn btn-primary" type="button" ng-click="saveReview()" value="Save Review"/>
     </div>
-
+    <div class="row">
+        <div class="row first">
+            <div class="col-sm-2 col-sm-offset-2">
+                <img src="../images/Layer_6.jpg" alt="American" class="img-responsive"/>
+            </div>
+            <div class="col-sm-2">
+                <img src="../images/Layer_7.jpg" alt="Asian" class="img-responsive" />
+            </div>
+            <div class="col-sm-2">
+                <img src="../images/Layer_8.jpg" alt="BBQ" class="img-responsive" />
+            </div>
+            <div class="col-sm-2">
+                <img src="../images/Layer_13.jpg" alt="African" class="img-responsive" />
+            </div>
+        </div>
+    </div>
 </div>
-
-
-
-
-
-
-
-
-
-
 <p>
-        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

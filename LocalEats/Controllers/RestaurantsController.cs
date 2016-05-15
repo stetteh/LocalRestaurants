@@ -157,26 +157,10 @@ namespace LocalEats.Controllers
 
             }
 
-            // db.Restaurants.ToList().Select(r => new RestaurantVm()
-            //{
-            //    RestaurantId = r.Id,
-            //    Name = r.Name,
-            //    Street = r.StreetAddress,
-            //    City = r.City,
-            //    State = r.State,
-            //    Zipcode = r.Zipcode,
-            //    PhoneNumber = r.PhoneNumber,
-            //    Description = r.Description,
-            //    Category = r.Category,
-            //    PossibleMenus = r.Menus.Select(m => new MenuVm() { Id = m.Id, Name = m.Name, Type = m.Type }),
-            //    PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name }),
-            //    PossiblePhotos = r.Photos.Select(p => new PhotoVm() { Id = p.Id, ImageUrl = "https://localdinning.blob.core.windows.net/" + p.Image })
-            //});
-
             return View(model);
         }
 
-        // GET: Posts/Details/5
+        //Details
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -188,10 +172,10 @@ namespace LocalEats.Controllers
             {
                 return HttpNotFound();
             }
-  
             return View(restaurant);
         }
 
+       
         [HttpGet]
         public ActionResult UploadImages()
         {

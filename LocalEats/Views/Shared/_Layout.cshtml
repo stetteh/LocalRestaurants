@@ -23,9 +23,10 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Restaurants")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Listing", "RestaurantList", "Restaurants")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
+
                 <div class="logo"><img src="../images/logo.png" alt="logo" class="img-responsive" /></div>
 
             </div>
@@ -36,12 +37,11 @@
     @RenderBody()
 </div>
 
-<div class="container">
     <div class="footer">
-        <p>&copy; @DateTime.Now.Year - Dine in Arkansas</p>
+        <div class="container">
+            <p>Copyright &copy; @DateTime.Now.Year - Dine in Arkansas</p>
+        </div>
     </div>
-</div>
-
 
 
 @Scripts.Render("~/bundles/jquery")
