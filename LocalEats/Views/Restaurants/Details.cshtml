@@ -9,18 +9,17 @@
 <div>
     <h4>Restaurant</h4>
     <hr />
-
     <div class="row">
         <div class="col-sm-8 col-sm-offset-3">
             <div class="col-sm-4">
                 <h3>@Html.DisplayFor(model => model.Name)</h3>
-                <br/>
-                <img src="../images/Layer_5.jpg" alt="Featured" class="img-responsive img-rounded pull-left gap-right center-block"/>
+                <br />
+                <img src="../images/Layer_5.jpg" alt="Featured" class="img-responsive" />
             </div>
             <div class="col-sm-7">
                 <p>@Html.DisplayFor(model => model.Category)</p>
                 <p>@Html.DisplayFor(model => model.StreetAddress)</p>
-                <p>@Html.DisplayFor(model => model.City), @Html.DisplayFor(model => model.State), @Html.DisplayFor(model => model.Zipcode)</p>
+                <p>@Html.DisplayFor(model => model.City), @Html.DisplayFor(model => model.State), @Html.DisplayFor(model => model.Zipcode) </p>
                 <p>@Html.DisplayFor(model => model.PhoneNumber)</p>
                 <p>@Html.DisplayFor(model => model.Description)</p>
             </div>
@@ -29,7 +28,7 @@
     <div class="row">
         <div class="row first">
             <div class="col-sm-2 col-sm-offset-2">
-                <img src="../images/Layer_6.jpg" alt="American" class="img-responsive"/>
+                <img src="../images/Layer_6.jpg" alt="American" class="img-responsive" />
             </div>
             <div class="col-sm-2">
                 <img src="../images/Layer_7.jpg" alt="Asian" class="img-responsive" />
@@ -44,6 +43,5 @@
     </div>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -53,6 +53,17 @@ namespace LocalEats.Models
 
     public class RestaurantVm
     {
+        private Restaurant restaurant;
+
+        public RestaurantVm(Restaurant restaurant)
+        {
+            this.restaurant = restaurant;
+        }
+
+        public RestaurantVm()
+        {
+        }
+
         public int RestaurantId { get; set; }
         public string Name { get; set; }
         public string Street { get; set; }

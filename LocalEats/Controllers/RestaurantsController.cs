@@ -63,6 +63,21 @@ namespace LocalEats.Controllers
             return View(model);
         }
 
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Restaurant restaurant = db.Restaurants.Find(id);
+            if (restaurant == null)
+            {
+                return HttpNotFound();
+            }
+            return View(restaurant);
+        }
+
+
         // GET: Restaurants/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -161,19 +176,21 @@ namespace LocalEats.Controllers
         }
 
         //Details
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Restaurant restaurant = db.Restaurants.Find(id);
-            if (restaurant == null)
-            {
-                return HttpNotFound();
-            }
-            return View(restaurant);
-        }
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    var restaurant = db.Restaurants.Find(id);
+        //    if (restaurant == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+
+        //    var restaurantView = new RestaurantVm(restaurant);
+        //    return View(restaurantView);
+        //}
 
        
         [HttpGet]
