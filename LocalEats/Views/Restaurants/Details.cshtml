@@ -4,19 +4,15 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>Restaurant Details</h4>
+    <h1>@Html.DisplayFor(model => model.Name)</h1>
     <hr />
     <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
             <div class="col-sm-4">
-                <h2>@Html.DisplayFor(model => model.Name)</h2>
                 <img src="../../images/Layer_5.jpg" alt="Featured" class="img-responsive img-rounded center-block" />
             </div>
             <div class="col-sm-8">
-                <br/>
                 <br />
                 <p>@Html.DisplayFor(model => model.Street)</p>
                 <p>@Html.DisplayFor(model => model.City), @Html.DisplayFor(model => model.State), @Html.DisplayFor(model => model.Zipcode) </p>

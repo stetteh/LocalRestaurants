@@ -33,7 +33,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Restaurant Details", "RestaurantDetails", "Restaurants", new { restaurantid = Model.RestaurantId }, null)
 </div>
 
 @section Scripts {

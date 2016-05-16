@@ -247,7 +247,7 @@ namespace LocalEats.Controllers
             var p = new Photo() { Restaurant = restaurant, Image = location };
             restaurant.Photos.Add(p);
             db.SaveChanges();
-            return RedirectToAction("RestaurantList");
+            return RedirectToAction("AddPhoto");
         }
     }
 }
