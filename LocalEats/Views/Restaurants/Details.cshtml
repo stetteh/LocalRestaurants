@@ -1,4 +1,4 @@
-﻿@model LocalEats.Models.Restaurant
+﻿@model LocalEats.Models.DetailsVm
 
 @{
     ViewBag.Title = "Details";
@@ -7,37 +7,38 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Restaurant</h4>
+    <h4>Restaurant Details</h4>
     <hr />
     <div class="row">
-        <div class="col-sm-8 col-sm-offset-3">
+        <div class="col-sm-8 col-sm-offset-2">
             <div class="col-sm-4">
-                <h3>@Html.DisplayFor(model => model.Name)</h3>
-                <br />
-                <img src="../images/Layer_5.jpg" alt="Featured" class="img-responsive" />
+                <h2>@Html.DisplayFor(model => model.Name)</h2>
+                <img src="../../images/Layer_5.jpg" alt="Featured" class="img-responsive img-rounded center-block" />
             </div>
-            <div class="col-sm-7">
-                <p>@Html.DisplayFor(model => model.Category)</p>
-                <p>@Html.DisplayFor(model => model.StreetAddress)</p>
+            <div class="col-sm-8">
+                <br/>
+                <br />
+                <p>@Html.DisplayFor(model => model.Street)</p>
                 <p>@Html.DisplayFor(model => model.City), @Html.DisplayFor(model => model.State), @Html.DisplayFor(model => model.Zipcode) </p>
                 <p>@Html.DisplayFor(model => model.PhoneNumber)</p>
                 <p>@Html.DisplayFor(model => model.Description)</p>
+                <p>@Html.DisplayFor(model => model.Category)</p>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="row first">
+        <div class="row detailspix">
             <div class="col-sm-2 col-sm-offset-2">
-                <img src="../images/Layer_6.jpg" alt="American" class="img-responsive" />
+                <img src="../../images/Layer_6.jpg" alt="American" class="img-responsive" />
             </div>
             <div class="col-sm-2">
-                <img src="../images/Layer_7.jpg" alt="Asian" class="img-responsive" />
+                <img src="../../images/Layer_7.jpg" alt="Asian" class="img-responsive" />
             </div>
             <div class="col-sm-2">
-                <img src="../images/Layer_8.jpg" alt="BBQ" class="img-responsive" />
+                <img src="../../images/Layer_8.jpg" alt="BBQ" class="img-responsive" />
             </div>
             <div class="col-sm-2">
-                <img src="../images/Layer_13.jpg" alt="African" class="img-responsive" />
+                <img src="../../images/Layer_13.jpg" alt="African" class="img-responsive" />
             </div>
         </div>
     </div>

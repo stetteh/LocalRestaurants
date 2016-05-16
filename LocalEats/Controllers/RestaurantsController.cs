@@ -69,12 +69,27 @@ namespace LocalEats.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Restaurant restaurant = db.Restaurants.Find(id);
+            var restaurant = db.Restaurants.Find(id);
             if (restaurant == null)
             {
                 return HttpNotFound();
             }
-            return View(restaurant);
+
+            var detailsView = new DetailsVm()
+            {
+                RestaurantId = restaurant.Id,
+                Name = restaurant.Name,
+                Street = restaurant.StreetAddress,
+                State = restaurant.State,
+                City = restaurant.City,
+                Zipcode = restaurant.Zipcode,
+                Description = restaurant.Description,
+                PhoneNumber = restaurant.PhoneNumber,
+                Category = restaurant.Category
+                
+
+            };
+            return View(detailsView);
         }
 
 

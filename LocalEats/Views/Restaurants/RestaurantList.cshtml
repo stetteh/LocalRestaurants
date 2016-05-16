@@ -3,36 +3,107 @@
 @{
     ViewBag.Title = "RestaurantList";
 }
-
-@using (Html.BeginForm("RestaurantList", "Restaurants", FormMethod.Get))
-{    <p>
-        City: @Html.DropDownList("restaurantCategory", "All")
-        <input type="submit" value="Filter" />
-    </p>
-}
+<div class="container">
+    <div id="map_canvas"></div>
+    <div id="map_spacer"></div>
+</div>
 
 <h2>RestaurantList</h2>
+<br />
+@using (Html.BeginForm("RestaurantList", "Restaurants", FormMethod.Get))
+{    <div class="row search">
+        Search by Category @Html.DropDownList("restaurantCategory", "All")
+         <button type="submit" class="btn btn-danger">submit</button>
+    </div>
+}                                
 <div class="container list">
     <div class="row">
         @foreach (var b in Model)
         {
             <div class="col-sm-3">
                 @*@if (b.PossiblePhotos.Any())
-                {
-                    foreach (var p in b.PossiblePhotos)
                     {
-                        <img src="@p.ImageUrl" alt="" />
-                    }
-                }*@
-                <img src="../images/Layer_6.jpg" alt="American" class="img-responsive" />
-                <p style="color: blue">
-                    <b>@b.Name </b>
-                    @Html.ActionLink("Details", "Details", new { id = b.RestaurantId })
-                </p>
-                <p>@b.Category</p>
-                <p>@b.Street</p>
-                <p>@b.City, @b.State, @b.Zipcode</p>
+                        foreach (var p in b.PossiblePhotos)
+                        {
+                            <img src="@p.ImageUrl" alt="" />
+                        }
+                    }*@
+                <img src="../images/Layer_6.jpg" alt="American" class="img-responsive"/>
+                <br />
+                    <h3>@Html.ActionLink(@b.Name, "Details", new { id = b.RestaurantId, @class = "actioncolor" }) </h3>          
+                <h5>@b.Category</h5>
+                <p>@b.City </p>
             </div>
         }
     </div>
 </div>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAm0-zI5LsfbmxymSAXnmT4qHUMJGel_nA"></script>
+<script type="text/javascript">
+    var markerCount = 0;
+    var map;
+
+    //Initializes the map…
+    function initialize() {
+        var myLatlng = new google.maps.LatLng(34.745806, -92.288358);
+        var geocoder = new google.maps.Geocoder();
+        var map_canvas = document.getElementById('map_canvas');
+        var map_options = {
+            center: myLatlng,
+            zoom: 10,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        map = new google.maps.Map(map_canvas, map_options);
+
+        @foreach (var r in Model)
+         {
+        <text>geocodeAddress("@r.Street @r.City, @r.State", geocoder, "@r.Name");</text>
+            }
+    }
+
+    //When the window is loaded, run the initialize function to
+    //setup the map
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+
+    function addMarkerToMap(lat, long, htmlMarkupForInfoWindow) {
+        var infowindow = new google.maps.InfoWindow();
+        var myLatLng = new google.maps.LatLng(lat, long);
+
+        console.log(map);
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            animation: google.maps.Animation.DROP,
+        });
+
+        //Gives each marker an Id for the on click
+        markerCount++;
+
+        //Creates the event listener for clicking the marker
+        //and places the marker on the map
+        google.maps.event.addListener(marker, 'click', (function (marker, markerCount) {
+            return function () {
+                infowindow.setContent(htmlMarkupForInfoWindow);
+                infowindow.open(map, marker);
+            }
+        })(marker, markerCount));
+
+    }
+
+    function geocodeAddress(address, geocoder, htmltoshow) {
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status === google.maps.GeocoderStatus.OK) {
+                console.log();
+                addMarkerToMap(results[0].geometry.location.lat(), results[0].geometry.location.lng(), htmltoshow);
+            } else {
+                console.log('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+
+
+
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>

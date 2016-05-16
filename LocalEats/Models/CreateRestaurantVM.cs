@@ -120,4 +120,21 @@ namespace LocalEats.Models
         public DateTime Date { get; set; }
         public ApplicationUser User { get; set; }
     }
+
+    public class DetailsVm
+    {
+        public int RestaurantId { get; set; }
+        public string Name { get; set; }
+        public string Street { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Zipcode { get; set; }
+        public string Description { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Photo { get; set; }
+        public Category Category { get; set; }
+        public IEnumerable<MenuVm> PossibleMenus { get; set; } = new List<MenuVm>();
+        public IEnumerable<DrinkVm> PossibleDrinks { get; set; } = new List<DrinkVm>();
+        public IEnumerable<PhotoVm> PossiblePhotos { get; set; } = new List<PhotoVm>();
+    }
 }
