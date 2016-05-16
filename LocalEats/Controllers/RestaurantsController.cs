@@ -189,24 +189,6 @@ namespace LocalEats.Controllers
 
             return View(model);
         }
-
-        //Details
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    var restaurant = db.Restaurants.Find(id);
-        //    if (restaurant == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-
-        //    var restaurantView = new RestaurantVm(restaurant);
-        //    return View(restaurantView);
-        //}
-
        
         [HttpGet]
         public ActionResult UploadImages()
@@ -240,7 +222,7 @@ namespace LocalEats.Controllers
             CloudBlockBlob blockBlob = container.GetBlockBlobReference(newFileName);
             blockBlob.UploadFromStream(imageStream);
 
-            return $"{folder}/{newFileName}";
+            return $"{folder.ToLower()}/{newFileName}";
         }
 
         [HttpGet]
