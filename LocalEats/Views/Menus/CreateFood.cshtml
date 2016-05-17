@@ -7,8 +7,9 @@
 <h2>CreateFood</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
+    @Html.HiddenFor(x => x.MenuId)
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
