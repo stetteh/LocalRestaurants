@@ -17,6 +17,7 @@ namespace LocalEats.Models
         public string PhoneNumber { get; set; }
         public string Description { get; set; }
         public string Features { get; set; }
+        public string Hours { get; set; }
         public Category Category { get; set; }
         
         public virtual ICollection<Menu> Menus { get; set; } = new List<Menu>();
@@ -60,7 +61,11 @@ namespace LocalEats.Models
         Vegeterain,
         Southern, 
         Italian,
-        Mexican
+        Mexican,
+        Buffet,
+        African,
+        Chinese,
+        Cuban,
     }
 
     public enum DrinkType
