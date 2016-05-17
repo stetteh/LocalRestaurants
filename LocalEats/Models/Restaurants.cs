@@ -66,6 +66,8 @@ namespace LocalEats.Models
         African,
         Chinese,
         Cuban,
+        Indian,
+        Pizza
     }
 
     public enum DrinkType

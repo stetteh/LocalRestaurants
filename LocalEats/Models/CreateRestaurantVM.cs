@@ -21,7 +21,6 @@ namespace LocalEats.Models
     public class CreateMenuVm
     {
         public int RestaurantId { get; set; }
-        public string Name { get; set; }
         public MenuType Type { get; set; }
     }
 
@@ -82,7 +81,6 @@ namespace LocalEats.Models
     public class MenuVm
     {
         public int Id { get; set; }
-        public string Name { get; set; }
         public MenuType Type { get; set; }
        
     }

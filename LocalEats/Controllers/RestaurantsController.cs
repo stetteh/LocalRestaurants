@@ -29,7 +29,7 @@ namespace LocalEats.Controllers
                 PhoneNumber = r.Zipcode,
                 Description = r.Description,
                 Category = r.Category,
-                PossibleMenus = r.Menus.Select(m => new MenuVm() {Id = m.Id, Name = m.Name, Type = m.Type}),
+                PossibleMenus = r.Menus.Select(m => new MenuVm() {Id = m.Id, Type = m.Type}),
                 PossibleDrinks = r.Drinks.Select(d => new DrinkVm() {Id = d.Id, Name = d.Name})
             });
             return View(model);
@@ -86,7 +86,7 @@ namespace LocalEats.Controllers
                 Description = restaurant.Description,
                 PhoneNumber = restaurant.PhoneNumber,
                 Category = restaurant.Category
-                
+
 
             };
             return View(detailsView);
@@ -174,7 +174,7 @@ namespace LocalEats.Controllers
                 PhoneNumber = r.PhoneNumber,
                 Description = r.Description,
                 Category = r.Category,
-                PossibleMenus = r.Menus.Select(m => new MenuVm() { Id = m.Id, Name = m.Name, Type = m.Type }),
+                PossibleMenus = r.Menus.Select(m => new MenuVm() { Id = m.Id, Type = m.Type }),
                 PossibleDrinks = r.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name }),
                 PossiblePhotos = r.Photos.Select(p => new PhotoVm() { Id = p.Id, ImageUrl = "https://localdinning.blob.core.windows.net/" + p.Image })
             })

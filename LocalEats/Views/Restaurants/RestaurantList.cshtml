@@ -1,4 +1,5 @@
-﻿@model IEnumerable<LocalEats.Models.RestaurantVm>
+﻿@using LocalEats.Migrations
+@model IEnumerable<LocalEats.Models.RestaurantVm>
 
 @{
     ViewBag.Title = "RestaurantList";
@@ -28,7 +29,7 @@
                             <img src="@p.ImageUrl" alt="" />
                         }
                     }*@
-                <img src="../images/Layer_6.jpg" alt="American" class="img-responsive"/>
+                <img src="../../images/Layer_6.jpg" alt="American" class="img-responsive"/>
                 <br />
                     <h3>@Html.ActionLink(@b.Name, "Details", new { id = b.RestaurantId }) </h3>          
                 <h5>@b.Category</h5>

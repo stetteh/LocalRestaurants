@@ -254,6 +254,10 @@
     <Compile Include="Migrations\201605170033076_newmigration.Designer.cs">
       <DependentUpon>201605170033076_newmigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605170234571_changetomenu.cs" />
+    <Compile Include="Migrations\201605170234571_changetomenu.Designer.cs">
+      <DependentUpon>201605170234571_changetomenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CreateRestaurantVM.cs" />
@@ -393,6 +397,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605170033076_newmigration.resx">
       <DependentUpon>201605170033076_newmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605170234571_changetomenu.resx">
+      <DependentUpon>201605170234571_changetomenu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -14,12 +14,11 @@ namespace LocalEats.Controllers
         [HttpGet]
         public ActionResult CreateMenu(int id)
         {
-
             var model = new CreateMenuVm();
             var restaurant = db.Restaurants.Find(id);
             model.RestaurantId = restaurant.Id;
-             model.Name = restaurant.Name;
             return View(model);
+            
         }
 
         [HttpPost]
@@ -29,17 +28,15 @@ namespace LocalEats.Controllers
             {
                 var restaurant = db.Restaurants.Find(model.RestaurantId);
 
-                var newMenu = new Menu()
+                var m = new Menu()
                 {
                     Restaurant = restaurant,
-                    Name = model.Name,
-                    //Description = model.Description,
                     Type = model.Type
                 };
-                restaurant.Menus.Add(newMenu);
+                restaurant.Menus.Add(m);
                 db.SaveChanges();
-                return RedirectToAction("CreateFood", new {menuid = newMenu.Id});
-            }
+                return RedirectToAction("CreateFood", new {menuid = m.Id });
+              }
             return View(model);
         }
 
@@ -47,7 +44,7 @@ namespace LocalEats.Controllers
         public ActionResult CreateFood(int menuid)
         {
             var menu = db.Menus.Find(menuid);
-            var model = new CreateFoodVm() {MenuId = menu.Id, Name = menu.Name};
+            var model = new CreateFoodVm() {MenuId = menu.Id};
             return View(model);
         }
 
@@ -58,7 +55,7 @@ namespace LocalEats.Controllers
             {
                 var menu = db.Menus.Find(model.MenuId);
 
-                var newfood = (new Food()
+                var newfood = new Food()
                 {
                     ParentMenu = menu,
                     Name = model.Name,
@@ -66,7 +63,8 @@ namespace LocalEats.Controllers
                     Price = model.Price,
                     FoodImage = model.Image,
                     Type = model.TypeType
-                });
+                };
+            ;
                 menu.Foods.Add(newfood);
                 db.SaveChanges();
             }
