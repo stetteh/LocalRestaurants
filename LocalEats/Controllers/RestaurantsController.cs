@@ -85,8 +85,10 @@ namespace LocalEats.Controllers
                 Zipcode = restaurant.Zipcode,
                 Description = restaurant.Description,
                 PhoneNumber = restaurant.PhoneNumber,
-                Category = restaurant.Category
-
+                Category = restaurant.Category,
+                PossibleMenus = restaurant.Menus.Select(m => new MenuVm() { Id = m.Id, Type = m.Type }),
+                PossibleDrinks = restaurant.Drinks.Select(d => new DrinkVm() { Id = d.Id, Name = d.Name }),
+                PossiblePhotos = restaurant.Photos.Select(p => new PhotoVm() {Id = p.Id, ImageUrl = "https://localdinning.blob.core.windows.net/" + p.Image})
 
             };
             return View(detailsView);
