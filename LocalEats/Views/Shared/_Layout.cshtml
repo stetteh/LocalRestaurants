@@ -23,7 +23,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Restaurants")</li>
                     <li>@Html.ActionLink("Listing", "RestaurantList", "Restaurants")</li>
-                    <li>@Html.ActionLink("Create Restaurant", "Create")</li>
+                    <li>@Html.ActionLink("Add Restaurant", "Create")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
 
@@ -37,7 +37,7 @@
     @RenderBody()
 </div>
         <div class="row footer">
-            <p>Copyright &copy; @DateTime.Now.Year - Built in Arkansas With Love</p>
+            <p>Copyright &copy; @DateTime.Now.Year - Built in Arkansas With Love, <a href="https://github.com/stetteh" target="_blank">Github</a></p>
         </div>
 
 

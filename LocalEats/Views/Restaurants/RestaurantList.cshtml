@@ -8,15 +8,15 @@
     <div id="map_canvas"></div>
     <div id="map_spacer"></div>
 </div>
-
-<h2>RestaurantList</h2>
+<br />
 <br />
 @using (Html.BeginForm("RestaurantList", "Restaurants", FormMethod.Get))
 {    <div class="row search">
         Search by Category @Html.DropDownList("restaurantCategory", "All")
          <button type="submit" class="btn btn-danger">submit</button>
     </div>
-}                                
+}
+<br />
 <div class="container list">
     <div class="row">
         @foreach (var b in Model)
@@ -26,8 +26,8 @@
                     {
                             <img src="@b.PossiblePhotos.FirstOrDefault().ImageUrl" alt="" />
                     }
-                @*<img src="../../images/Layer_6.jpg" alt="American" class="img-responsive"/>*@
-                <br />
+               
+                <br/><br/>
                     <h3>@Html.ActionLink(@b.Name, "Details", new { id = b.RestaurantId }) </h3>          
                 <h5>@b.Category</h5>
                 <p>@b.City </p>
