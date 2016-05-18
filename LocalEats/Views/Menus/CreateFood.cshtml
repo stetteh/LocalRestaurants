@@ -9,11 +9,10 @@
 
 @using (Html.BeginForm())
 {
-    @Html.HiddenFor(x => x.MenuId)
+    @Html.HiddenFor(x=>x.MenuId)
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>CreateFoodVm</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">

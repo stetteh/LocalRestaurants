@@ -30,7 +30,7 @@
 <div class="row">
     <div class="row detailspix">
         <div class="col-sm-10 col-sm-offset-1">
-            @foreach (var p in @Model.PossiblePhotos)
+            @foreach (var p in @Model.PossiblePhotos.Skip(1).Take(4))
             {
                 <div class="col-sm-3">
                     @if (@Model.PossiblePhotos.Any())
@@ -43,7 +43,116 @@
         </div>
     </div>
 </div>
+<br/>
+<br/>
+<br/>
+<br/>
 
+<div class="container">
+    <h2 style="text-align: center;">Menu</h2>
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="col-sm-4">
+                <h3>1/2 Slab Dinner</h3>
+                <h4>$10.49</h4>
+            </div>
+            <div class="col-sm-4">
+                <h3>3/4 Slab Dinner</h3>
+                <h4>$15.49</h4>
+            </div>
+            <div class="col-sm-4">
+                <h3>Slab Dinner for 1</h3>
+                <h4>$18.99</h4>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="col-sm-4">
+                <h3>Rib Combo</h3>
+                <h4>$19.49</h4>
+            </div>
+            <div class="col-sm-4">
+                <h3>Ribs Plus</h3>
+                <h4>$19.99</h4>
+                <p>Ribs, plus your choice of pork, sausage, chicken, catfish</p>
+            </div>
+            <div class="col-sm-4">
+                <h3>Pulled Pork &amp; Spaghetti Combo</h3>
+                <h4>$9.99</h4>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="col-sm-4">
+                <h3>Beef Brisket</h3>
+                <h4>$11.99</h4>
+            </div>
+            <div class="col-sm-4">
+                <h3>Half Chicken - BBQ or Rotisserie</h3>
+                <h4>$9.99</h4>
+            </div>
+            <div class="col-sm-4">
+                <h3>Combo - Choose 2: Pork, Sausage, Beef or Chicken</h3>
+                <h4>$13.99</h4>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="col-sm-4">
+                <h3>Smoked Sausage</h3>
+                <h4>$9.99</h4>
+            </div>
+            <div class="col-sm-4">
+                <h3>Beef Brisket</h3>
+                <h4>$11.99</h4>
+            </div>
+            <div class="col-sm-4">
+                <h3>Combo - Choose 2: Pork, Sausage, Beef or Chicken</h3>
+                <h4>$13.99</h4>
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <div class="col-sm-4">
+                <h3>Smoked Sausage</h3>
+                <h4>$9.99</h4>
+            </div>
+            <div class="col-sm-4">
+                <h3>Beef Brisket</h3>
+                <h4>$11.99</h4>
+            </div>
+            <div class="col-sm-4">
+                <h3>Half Chicken - BBQ or Rotisserie</h3>
+                <h4>$9.99</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="col-sm-4">
+                    <h3>Smoked Sausage</h3>
+                    <h4>$9.99</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Half Chicken - BBQ or Rotisserie</h3>
+                    <h4>$9.99</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Combo - Choose 2: Pork, Sausage, Beef or Chicken</h3>
+                    <h4>$13.99</h4>
+                </div>
+            </div>
+
+        </div>
+
+</div>
 
 <p>
     @Html.ActionLink("Back to List", "RestaurantList")

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using LocalEats.Models;
+using Menu = LocalEats.Models.Menu;
 
 namespace LocalEats.Controllers
 {
@@ -43,8 +45,9 @@ namespace LocalEats.Controllers
         [HttpGet]
         public ActionResult CreateFood(int menuid)
         {
+            var model = new CreateFoodVm();
             var menu = db.Menus.Find(menuid);
-            var model = new CreateFoodVm() {MenuId = menu.Id};
+            model.MenuId = menu.Id;
             return View(model);
         }
 
@@ -55,20 +58,19 @@ namespace LocalEats.Controllers
             {
                 var menu = db.Menus.Find(model.MenuId);
 
-                var newfood = new Food()
+                var f = new Food()
                 {
                     ParentMenu = menu,
                     Name = model.Name,
                     Description = model.Description,
                     Price = model.Price,
-                    FoodImage = model.Image,
                     Type = model.TypeType
                 };
-            ;
-                menu.Foods.Add(newfood);
+                menu.Foods.Add(f);
                 db.SaveChanges();
+                return RedirectToAction("CreateMenu", new { id = menu.Id});
             }
-            return RedirectToAction("CreateMenu");
+            return View(model);
         }
 
         [HttpGet]
