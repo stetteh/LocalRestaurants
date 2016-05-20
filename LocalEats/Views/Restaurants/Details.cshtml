@@ -14,7 +14,7 @@
         <div class="col-sm-4">
             @if (@Model.PossiblePhotos.Any())
             {
-                <img src="@Model.PossiblePhotos.FirstOrDefault().ImageUrl" alt="" />
+                <img src="@Model.PossiblePhotos.FirstOrDefault().ImageUrl" alt="" class="img-responsive"/>
             }
         </div>
         <div class="col-sm-8">
@@ -35,7 +35,7 @@
                 <div class="col-sm-3">
                     @if (@Model.PossiblePhotos.Any())
                     {
-                        <img src="@p.ImageUrl" alt=""/>
+                        <img src="@p.ImageUrl" alt="" class="img-responsive"/>
                     }
                 </div>
                 <br/>

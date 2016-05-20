@@ -79,6 +79,9 @@ textarea {
     color: white;
     
 }
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    background-color: #c0392b; 
+}
 .fres1 {
     background-color: #c0392b;
     padding-bottom: 15px;

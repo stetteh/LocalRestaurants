@@ -50,7 +50,7 @@
     <div class="row fres">
         <div class="col-sm-9 col-sm-offset-2">
             <div class="col-sm-4">
-                <img src="../../images/Layer_2.jpg" alt="Featured" class="img-responsive img-rounded pull-left gap-right center-block"/>
+                <img src="../../images/Layer_2.jpg" alt="Featured" class="img-responsive img-rounded gap-right center-block"/>
             </div>
             <div class="col-sm-7 fres1">
                 <h2>Local Lime</h2>
@@ -67,7 +67,7 @@
     <div class="row fres">
         <div class="col-sm-9 col-sm-offset-2">
             <div class="col-sm-4">
-                <img src="../../images/Layer_5.jpg" alt="Featured" class="img-responsive img-rounded pull-left gap-right center-block"/>
+                <img src="../../images/Layer_5.jpg" alt="Featured" class="img-responsive img-rounded gap-right center-block"/>
             </div>
             <div class="col-sm-7 fres1">
                 <h2>Old South Restaurant</h2>
@@ -84,7 +84,7 @@
     <div class="row fres">
         <div class="col-sm-9 col-sm-offset-2">
             <div class="col-sm-4">
-                <img src="../../images/Layer_3.jpg" alt="Featured" class="img-responsive img-rounded pull-left gap-right center-block"/>
+                <img src="../../images/Layer_3.jpg" alt="Featured" class="img-responsive img-rounded gap-right center-block"/>
             </div>
             <div class="col-sm-7 fres1">
                 <h2>Holly's Country Cooking</h2>
@@ -125,7 +125,8 @@
         @foreach (var r in Model)
          {
         <text>geocodeAddress("@r.Street @r.City, @r.State", geocoder, "@r.Name");</text>
-            }
+         }
+
     }
 
     //When the window is loaded, run the initialize function to
